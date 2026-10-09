@@ -1,0 +1,24 @@
+services:
+  mock-backend:
+    build:
+      context: .
+      dockerfile: backend/mock_backend/Dockerfile
+    ports: ["8001:8001"]
+  gateway:
+    build: .
+    environment:
+      INFERENCE_MODE: mock
+      MOCK_BACKEND_URL: http://mock-backend:8001
+      SCHEDULER_POLICY: fifo
+      CORS_ORIGINS: http://localhost:5173
+    ports: ["8000:8000"]
+    depends_on: [mock-backend]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports: ["5173:5173"]
+    depends_on: [gateway]
