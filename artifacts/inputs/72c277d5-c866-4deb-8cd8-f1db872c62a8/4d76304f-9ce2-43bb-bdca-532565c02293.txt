@@ -1,0 +1,6 @@
+request_id: 4d76304f-9ce2-43bb-bdca-532565c02293
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the largest mammal on Earth?

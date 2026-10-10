@@ -1,0 +1,10 @@
+request_id: 46b1fa62-e351-45b5-81df-324c5f8a2745
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 30
+ttft_ms: 6036.628687001212
+
+The past tense of "run" is **ran**.
+
+Here is the breakdown:
+*   **Present tense:** run (e.g.,

@@ -1,0 +1,6 @@
+request_id: d8d7816a-ab75-4eaa-a27a-3d3a63a33a3a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the square root of 81?

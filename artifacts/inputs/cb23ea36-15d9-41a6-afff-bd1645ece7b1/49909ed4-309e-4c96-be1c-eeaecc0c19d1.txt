@@ -1,0 +1,6 @@
+request_id: 49909ed4-309e-4c96-be1c-eeaecc0c19d1
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Who painted the Mona Lisa?

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Scale,
   Clock,
@@ -27,6 +28,7 @@ import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { useBackendStatus } from '../context/BackendStatusContext';
 
 export const ComparisonPage = () => {
+  const [searchParams] = useSearchParams();
   const { useDemoMode } = useBackendStatus();
 
   const [experiments, setExperiments] = useState([]);
@@ -35,15 +37,20 @@ export const ComparisonPage = () => {
   const [tokenAwareExp, setTokenAwareExp] = useState(null);
   const [fifoExp, setFifoExp] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [faultObservations, setFaultObservations] = useState([]);
 
   const loadExperiments = useCallback(async () => {
     setIsLoading(true);
     try {
       const list = await experimentService.getExperimentsList(useDemoMode);
       setExperiments(list);
+      const faultData = await experimentService.getFaultRecoveryLatest(useDemoMode);
+      setFaultObservations(faultData.observations || []);
 
-      const defaultTA = list.find((e) => e.policy === 'token_aware');
-      const defaultFifo = list.find((e) => e.policy === 'fifo');
+      const requestedTA = searchParams.get('token');
+      const requestedFifo = searchParams.get('fifo');
+      const defaultTA = list.find((e) => e.experiment_id === requestedTA) || list.find((e) => e.policy === 'token_aware');
+      const defaultFifo = list.find((e) => e.experiment_id === requestedFifo) || list.find((e) => e.policy === 'fifo');
 
       if (defaultTA) setSelectedTokenAwareId(defaultTA.experiment_id);
       if (defaultFifo) setSelectedFifoId(defaultFifo.experiment_id);
@@ -52,7 +59,7 @@ export const ComparisonPage = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [useDemoMode]);
+  }, [useDemoMode, searchParams]);
 
   useEffect(() => {
     loadExperiments();
@@ -93,64 +100,59 @@ export const ComparisonPage = () => {
     );
   }
 
-  const ta = tokenAwareExp || {
-    experiment_id: 'exp-ta',
-    name: 'Token-Aware Run',
-    current_p95_latency_ms: 238,
-    median_latency_ms: 124,
-    p99_latency_ms: 380,
-    avg_ttft_ms: 34.8,
-    current_throughput_rps: 34.2,
-    tokens_per_second: 1140,
-    starvation_rate_pct: 0.8,
-    avg_backend_utilization_pct: 71.4,
-  };
+  if (!tokenAwareExp || !fifoExp) {
+    return <LoadingSpinner label="Loading selected benchmark measurements..." />;
+  }
 
-  const fifo = fifoExp || {
-    experiment_id: 'exp-fifo',
-    name: 'FIFO Baseline Run',
-    current_p95_latency_ms: 418.5,
-    median_latency_ms: 245,
-    p99_latency_ms: 680,
-    avg_ttft_ms: 78.4,
-    current_throughput_rps: 28.1,
-    tokens_per_second: 820,
-    starvation_rate_pct: 11.2,
-    avg_backend_utilization_pct: 54.0,
-  };
+  const ta = tokenAwareExp;
+  const fifo = fifoExp;
 
-  const p95Improvement = Math.round(((fifo.current_p95_latency_ms - ta.current_p95_latency_ms) / fifo.current_p95_latency_ms) * 100);
-  const ttftImprovement = Math.round(((fifo.avg_ttft_ms - ta.avg_ttft_ms) / fifo.avg_ttft_ms) * 100);
-  const throughputGain = Math.round(((ta.current_throughput_rps - fifo.current_throughput_rps) / fifo.current_throughput_rps) * 100);
-  const starvationReduction = Math.round(((fifo.starvation_rate_pct - ta.starvation_rate_pct) / (fifo.starvation_rate_pct || 1)) * 100);
+  const percentChange = (baseline, candidate, higherIsBetter = false) => {
+    const base = Number(baseline);
+    const next = Number(candidate);
+    if (!Number.isFinite(base) || !Number.isFinite(next) || base === 0) return null;
+    return Math.round(((higherIsBetter ? next - base : base - next) / base) * 100);
+  };
+  const p95Improvement = percentChange(fifo.current_p95_latency_ms, ta.current_p95_latency_ms);
+  const avgLatencyImprovement = percentChange(fifo.current_avg_latency_ms, ta.current_avg_latency_ms);
+  const ttftImprovement = percentChange(fifo.avg_ttft_ms, ta.avg_ttft_ms);
+  const throughputGain = percentChange(fifo.current_throughput_rps, ta.current_throughput_rps, true);
+  const starvationReduction = percentChange(fifo.starvation_rate_pct, ta.starvation_rate_pct);
 
   const latencyComparisonData = [
+    { metric: 'Average Latency', FIFO: fifo.current_avg_latency_ms, TokenAware: ta.current_avg_latency_ms },
     { metric: 'Avg TTFT', FIFO: fifo.avg_ttft_ms, TokenAware: ta.avg_ttft_ms },
     { metric: 'Median (p50)', FIFO: fifo.median_latency_ms, TokenAware: ta.median_latency_ms },
     { metric: 'p95 Latency', FIFO: fifo.current_p95_latency_ms, TokenAware: ta.current_p95_latency_ms },
-    { metric: 'p99 Latency', FIFO: fifo.p99_latency_ms || 600, TokenAware: ta.p99_latency_ms || 350 },
+    { metric: 'p99 Latency', FIFO: fifo.p99_latency_ms ?? 0, TokenAware: ta.p99_latency_ms ?? 0 },
   ];
 
   const throughputUtilizationData = [
     { metric: 'Throughput (RPS)', FIFO: fifo.current_throughput_rps, TokenAware: ta.current_throughput_rps },
-    { metric: 'Tokens/s (÷10)', FIFO: (fifo.tokens_per_second || 800) / 10, TokenAware: (ta.tokens_per_second || 1100) / 10 },
+    { metric: 'Tokens/s (÷10)', FIFO: (fifo.tokens_per_second ?? 0) / 10, TokenAware: (ta.tokens_per_second ?? 0) / 10 },
     { metric: 'Util %', FIFO: fifo.avg_backend_utilization_pct, TokenAware: ta.avg_backend_utilization_pct },
   ];
 
+  const starvationThreshold = fifo.starvation_threshold_ms || 2000;
   const queueDistributionData = [
-    { waitBucket: '0-50ms', FIFO: 28, TokenAware: 64 },
-    { waitBucket: '50-150ms', FIFO: 40, TokenAware: 26 },
-    { waitBucket: '150-300ms', FIFO: 18, TokenAware: 8 },
-    { waitBucket: '>300ms (Starved)', FIFO: 14, TokenAware: 2 },
+    { waitBucket: '0-50ms', FIFO: fifo.queue_wait_distribution_pct?.under_50 ?? 0, TokenAware: ta.queue_wait_distribution_pct?.under_50 ?? 0 },
+    { waitBucket: '50-150ms', FIFO: fifo.queue_wait_distribution_pct?.['50_to_150'] ?? 0, TokenAware: ta.queue_wait_distribution_pct?.['50_to_150'] ?? 0 },
+    { waitBucket: `150-${starvationThreshold}ms`, FIFO: fifo.queue_wait_distribution_pct?.['150_to_threshold'] ?? 0, TokenAware: ta.queue_wait_distribution_pct?.['150_to_threshold'] ?? 0 },
+    { waitBucket: `>${starvationThreshold}ms (Starved)`, FIFO: fifo.queue_wait_distribution_pct?.over_threshold ?? 0, TokenAware: ta.queue_wait_distribution_pct?.over_threshold ?? 0 },
   ];
 
-  const failureRecoveryTimelineData = [
-    { time: 'T+0s', FIFO: 210, TokenAware: 120 },
-    { time: 'T+20s (Fault)', FIFO: 480, TokenAware: 240 },
-    { time: 'T+40s (Peak)', FIFO: 720, TokenAware: 290 },
-    { time: 'T+60s (Scale)', FIFO: 530, TokenAware: 190 },
-    { time: 'T+80s (Done)', FIFO: 240, TokenAware: 130 },
-  ];
+  const failureRecoveryTimelineData = [...new Set(faultObservations.map((item) => item.phase_order))]
+    .sort((a, b) => a - b)
+    .map((order) => {
+      const rows = faultObservations.filter((item) => item.phase_order === order);
+      const fifoRow = rows.find((item) => item.policy === 'fifo');
+      const tokenRow = rows.find((item) => item.policy === 'token_aware');
+      return {
+        time: (fifoRow || tokenRow)?.phase?.replaceAll('_', ' ') || `Phase ${order + 1}`,
+        FIFO: fifoRow?.average_latency_ms ?? null,
+        TokenAware: tokenRow?.average_latency_ms ?? null,
+      };
+    });
 
   const tooltipStyle = {
     backgroundColor: '#1e293b',
@@ -222,14 +224,26 @@ export const ComparisonPage = () => {
       </div>
 
       {/* Delta Improvements */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-5">
+        <div className="rounded-lg border border-cyan-200 dark:border-cyan-900 bg-cyan-50/50 dark:bg-cyan-950/30 p-3.5">
+          <div className="flex items-center justify-between text-xs text-cyan-700 dark:text-cyan-300">
+            <span>Average Latency Change</span>
+            <Clock className="h-3.5 w-3.5" />
+          </div>
+          <div className="mt-1.5 font-mono text-xl font-bold text-cyan-800 dark:text-cyan-200">
+            {avgLatencyImprovement === null ? 'N/A' : `${avgLatencyImprovement >= 0 ? 'Reduction' : 'Regression'} ${Math.abs(avgLatencyImprovement)}%`}
+          </div>
+          <span className="text-[10px] text-gray-500 font-mono">
+            {Number(fifo.current_avg_latency_ms).toFixed(1)}ms to {Number(ta.current_avg_latency_ms).toFixed(1)}ms
+          </span>
+        </div>
         <div className="rounded-lg border border-blue-200 dark:border-blue-900 bg-blue-50/50 dark:bg-blue-950/30 p-3.5">
           <div className="flex items-center justify-between text-xs text-blue-700 dark:text-blue-300">
-            <span>p95 Latency Reduction</span>
+            <span>p95 Latency Change</span>
             <TrendingDown className="h-3.5 w-3.5" />
           </div>
           <div className="mt-1.5 font-mono text-xl font-bold text-blue-800 dark:text-blue-200">
-            -{p95Improvement}%
+            {p95Improvement === null ? 'N/A' : `${p95Improvement >= 0 ? 'Reduction' : 'Regression'} ${Math.abs(p95Improvement)}%`}
           </div>
           <span className="text-[10px] text-gray-500 font-mono">
             {fifo.current_p95_latency_ms}ms → {ta.current_p95_latency_ms}ms
@@ -238,11 +252,11 @@ export const ComparisonPage = () => {
 
         <div className="rounded-lg border border-emerald-200 dark:border-emerald-900 bg-emerald-50/50 dark:bg-emerald-950/30 p-3.5">
           <div className="flex items-center justify-between text-xs text-emerald-700 dark:text-emerald-300">
-            <span>Avg TTFT Speedup</span>
+            <span>Avg TTFT Change</span>
             <TrendingDown className="h-3.5 w-3.5" />
           </div>
           <div className="mt-1.5 font-mono text-xl font-bold text-emerald-800 dark:text-emerald-200">
-            -{ttftImprovement}%
+            {ttftImprovement === null ? 'N/A' : `${ttftImprovement >= 0 ? 'Reduction' : 'Regression'} ${Math.abs(ttftImprovement)}%`}
           </div>
           <span className="text-[10px] text-gray-500 font-mono">
             {fifo.avg_ttft_ms}ms → {ta.avg_ttft_ms}ms
@@ -251,11 +265,11 @@ export const ComparisonPage = () => {
 
         <div className="rounded-lg border border-blue-200 dark:border-blue-900 bg-blue-50/50 dark:bg-blue-950/30 p-3.5">
           <div className="flex items-center justify-between text-xs text-blue-700 dark:text-blue-300">
-            <span>Throughput Gain</span>
+            <span>Throughput Change</span>
             <TrendingUp className="h-3.5 w-3.5" />
           </div>
           <div className="mt-1.5 font-mono text-xl font-bold text-blue-800 dark:text-blue-200">
-            +{throughputGain}%
+            {throughputGain === null ? 'N/A' : `${throughputGain >= 0 ? 'Gain' : 'Regression'} ${Math.abs(throughputGain)}%`}
           </div>
           <span className="text-[10px] text-gray-500 font-mono">
             {fifo.current_throughput_rps} → {ta.current_throughput_rps} rps
@@ -264,11 +278,11 @@ export const ComparisonPage = () => {
 
         <div className="rounded-lg border border-purple-200 dark:border-purple-900 bg-purple-50/50 dark:bg-purple-950/30 p-3.5">
           <div className="flex items-center justify-between text-xs text-purple-700 dark:text-purple-300">
-            <span>Starvation Reduction</span>
+            <span>Starvation Change</span>
             <TrendingDown className="h-3.5 w-3.5" />
           </div>
           <div className="mt-1.5 font-mono text-xl font-bold text-purple-800 dark:text-purple-200">
-            -{starvationReduction}%
+            {starvationReduction === null ? 'N/A' : `${starvationReduction >= 0 ? 'Reduction' : 'Regression'} ${Math.abs(starvationReduction)}%`}
           </div>
           <span className="text-[10px] text-gray-500 font-mono">
             {fifo.starvation_rate_pct}% → {ta.starvation_rate_pct}%
@@ -280,7 +294,7 @@ export const ComparisonPage = () => {
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-2xs">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">
-            Latency Percentiles Comparison (ms)
+            Completion Latency and TTFT Comparison (ms)
           </h3>
           <div className="h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
@@ -314,13 +328,26 @@ export const ComparisonPage = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
+          <div className="mt-3 grid grid-cols-3 gap-2 border-t border-gray-100 pt-3 text-[10px] dark:border-slate-800">
+            <div><span className="text-gray-500">Avg wait</span><div className="font-mono">{Number(fifo.average_queue_wait_ms ?? 0).toFixed(1)} / {Number(ta.average_queue_wait_ms ?? 0).toFixed(1)} ms</div></div>
+            <div><span className="text-gray-500">P95 wait</span><div className="font-mono">{Number(fifo.p95_queue_wait_ms ?? 0).toFixed(1)} / {Number(ta.p95_queue_wait_ms ?? 0).toFixed(1)} ms</div></div>
+            <div><span className="text-gray-500">Max wait</span><div className="font-mono">{Number(fifo.max_queue_wait_ms ?? 0).toFixed(1)} / {Number(ta.max_queue_wait_ms ?? 0).toFixed(1)} ms</div></div>
+            <div><span className="text-gray-500">Over 300 ms</span><div className="font-mono">{fifo.over_300ms_rate_pct ?? 'N/A'}% / {ta.over_300ms_rate_pct ?? 'N/A'}%</div></div>
+            <div><span className="text-gray-500">Starved &gt; {starvationThreshold} ms</span><div className="font-mono">{fifo.starvation_rate_pct}% / {ta.starvation_rate_pct}%</div></div>
+            <div><span className="text-gray-500">Overdue dispatched</span><div className="font-mono">{fifo.overdue_dispatched ?? 0} / {ta.overdue_dispatched ?? 0}</div></div>
+            <div><span className="text-gray-500">Max bypass</span><div className="font-mono">{fifo.max_bypass ?? 0} / {ta.max_bypass ?? 0}</div></div>
+            <div><span className="text-gray-500">Fairness starvation</span><div className="font-mono">{fifo.fairness_starvation_rate_pct ?? 'N/A'}% / {ta.fairness_starvation_rate_pct ?? 'N/A'}%</div></div>
+            <div><span className="text-gray-500">Jain fairness</span><div className="font-mono">{fifo.jain_fairness_on_slowdown == null ? 'N/A' : Number(fifo.jain_fairness_on_slowdown).toFixed(3)} / {ta.jain_fairness_on_slowdown == null ? 'N/A' : Number(ta.jain_fairness_on_slowdown).toFixed(3)}</div></div>
+          </div>
         </div>
 
         <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-2xs">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">
             Latency During Fault & Recovery (ms)
           </h3>
-          <div className="h-56 w-full">
+          {failureRecoveryTimelineData.length === 0 ? (
+            <div className="flex h-56 items-center justify-center text-center text-xs text-gray-500 dark:text-slate-400">No persisted fault-and-recovery run is available.</div>
+          ) : <div className="h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={failureRecoveryTimelineData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" dark:stroke="#334155" opacity={0.5} />
@@ -332,7 +359,7 @@ export const ComparisonPage = () => {
                 <Line type="monotone" dataKey="TokenAware" stroke="#2563eb" strokeWidth={2} name="Token-Aware" />
               </LineChart>
             </ResponsiveContainer>
-          </div>
+          </div>}
         </div>
 
         <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-2xs">

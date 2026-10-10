@@ -1,0 +1,6 @@
+request_id: e4694491-accc-4d20-b659-4475a77e4b08
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Compare three popular machine learning algorithms for classification in depth, including assumptions, strengths, weaknesses and ideal datasets.

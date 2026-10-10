@@ -1,0 +1,7 @@
+request_id: e9ab9658-bf1b-4e38-80b8-c3e03141270f
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 16
+ttft_ms: 28189.950513999065
+
+The **heart** is the organ that pumps blood through the human body.

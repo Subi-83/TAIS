@@ -1,0 +1,6 @@
+request_id: a9cd681a-6e2e-4a43-8141-9fb92f3b73a8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Implement a simple event-driven simulator in Python for a help desk queue with arrival, service and departure events, and explain the results.

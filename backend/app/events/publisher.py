@@ -45,9 +45,13 @@ class EventPublisher:
 
     async def subscribe(self, experiment_id: str, last_event_id: int | None = None) -> AsyncIterator[str]:
         queue: asyncio.Queue[Event] = asyncio.Queue(maxsize=self._subscriber_size)
-        for item in self._history[experiment_id]:
-            if last_event_id is None or item.id > last_event_id:
-                queue.put_nowait(item)
+        pending = [item for item in self._history[experiment_id] if last_event_id is None or item.id > last_event_id]
+        if len(pending) > self._subscriber_size:
+            newest = pending[-1]
+            queue.put_nowait(Event(newest.id, "stream_resync_required", {"message": "Event backlog truncated; refresh experiment snapshot"}, newest.timestamp, experiment_id))
+            pending = pending[-(self._subscriber_size - 1):]
+        for item in pending:
+            queue.put_nowait(item)
         self._subscribers[experiment_id].add(queue)
         try:
             while True:

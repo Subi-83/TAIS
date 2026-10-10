@@ -1,0 +1,6 @@
+request_id: f78e8b9c-b171-4e41-99d6-0a2cf036f052
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is 100 divided by 4?

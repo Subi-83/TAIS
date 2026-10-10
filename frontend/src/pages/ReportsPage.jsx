@@ -88,6 +88,7 @@ export const ReportsPage = () => {
       ['Completed Requests', selectedDetail.completed_requests, 'requests'],
       ['Failed Requests', selectedDetail.failed_requests, 'requests'],
       ['Throughput', selectedDetail.current_throughput_rps, 'req/s'],
+      ['Average Latency', selectedDetail.current_avg_latency_ms, 'ms'],
       ['p95 Latency', selectedDetail.current_p95_latency_ms, 'ms'],
       ['Avg TTFT', selectedDetail.avg_ttft_ms, 'ms'],
       ['Backend Utilization', selectedDetail.avg_backend_utilization_pct, '%'],

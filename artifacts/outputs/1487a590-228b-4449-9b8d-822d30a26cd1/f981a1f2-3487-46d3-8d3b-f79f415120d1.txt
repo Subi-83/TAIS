@@ -1,0 +1,7 @@
+request_id: f981a1f2-3487-46d3-8d3b-f79f415120d1
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 14
+ttft_ms: 4581.212042001425
+
+There are **366** days in a leap year.

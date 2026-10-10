@@ -19,9 +19,11 @@ class HealthMonitor:
     async def _run(self) -> None:
         while True:
             try:
-                adapter = self.app.state.real_adapter if self.app.state.settings.inference_mode == "real" else self.app.state.mock_adapter
-                await adapter.health_check()
-                self.healthy = True
+                if self.app.state.backend_pool:
+                    self.healthy = await self.app.state.backend_pool.health_check()
+                else:
+                    await self.app.state.mock_adapter.health_check()
+                    self.healthy = True
             except Exception:
                 self.healthy = False
             await asyncio.sleep(self.interval)

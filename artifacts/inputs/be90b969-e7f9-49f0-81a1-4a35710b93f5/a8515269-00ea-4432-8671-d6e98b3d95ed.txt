@@ -1,0 +1,6 @@
+request_id: a8515269-00ea-4432-8671-d6e98b3d95ed
+model: gemma4:12b
+priority: normal
+max_output_tokens: 350
+
+Summarize the main arguments of the theory of relativity in three paragraphs.

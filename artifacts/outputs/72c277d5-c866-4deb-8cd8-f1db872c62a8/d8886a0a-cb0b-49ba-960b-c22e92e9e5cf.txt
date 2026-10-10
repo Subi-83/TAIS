@@ -1,0 +1,7 @@
+request_id: d8886a0a-cb0b-49ba-960b-c22e92e9e5cf
+model: gemma4:12b
+input_tokens: 20
+output_tokens: 9
+ttft_ms: 26029.217113000414
+
+The abbreviation for kilometer is **km**.

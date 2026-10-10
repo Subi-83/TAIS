@@ -1,0 +1,6 @@
+request_id: 0823f375-7ff2-4562-9451-be067ae5f620
+model: gemma4:12b
+priority: normal
+max_output_tokens: 133
+
+Write a short email asking my manager for a day off next Friday.

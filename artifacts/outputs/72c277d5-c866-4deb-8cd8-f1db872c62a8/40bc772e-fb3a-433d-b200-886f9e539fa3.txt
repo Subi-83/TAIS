@@ -1,0 +1,11 @@
+request_id: 40bc772e-fb3a-433d-b200-886f9e539fa3
+model: gemma4:12b
+input_tokens: 28
+output_tokens: 33
+ttft_ms: 22177.164302000165
+
+**0.5** is bigger than 0.25.
+
+Here are two ways to look at it:
+
+1.  **Decimal Place Value:**

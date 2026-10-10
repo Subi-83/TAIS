@@ -1,0 +1,9 @@
+request_id: ba249d59-d638-4bc7-a003-691bc7e5213b
+model: gemma4:12b
+input_tokens: 37
+output_tokens: 52
+ttft_ms: 18578.19512700007
+
+Think of photosynthesis as the way plants "cook" their own food. Since plants can’t go to a grocery store, they use sunlight, water, and air to create the energy they need to grow.
+
+Here is the process broken down into three simple

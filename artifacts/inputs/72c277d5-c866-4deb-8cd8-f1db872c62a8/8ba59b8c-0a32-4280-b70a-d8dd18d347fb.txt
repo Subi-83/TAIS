@@ -1,0 +1,6 @@
+request_id: 8ba59b8c-0a32-4280-b70a-d8dd18d347fb
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain how a binary search works and why it is fast.

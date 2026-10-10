@@ -1,0 +1,6 @@
+request_id: b7653031-87cd-4dee-862c-7c4a14d57d84
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe what the circuit breaker pattern is in microservices.

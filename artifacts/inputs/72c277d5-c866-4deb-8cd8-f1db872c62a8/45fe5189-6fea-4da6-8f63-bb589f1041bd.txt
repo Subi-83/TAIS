@@ -1,0 +1,6 @@
+request_id: 45fe5189-6fea-4da6-8f63-bb589f1041bd
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the difference between authentication and authorization.

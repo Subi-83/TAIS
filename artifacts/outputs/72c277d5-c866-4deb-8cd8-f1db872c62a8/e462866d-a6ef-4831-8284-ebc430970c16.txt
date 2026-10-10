@@ -1,0 +1,9 @@
+request_id: e462866d-a6ef-4831-8284-ebc430970c16
+model: gemma4:12b
+input_tokens: 25
+output_tokens: 30
+ttft_ms: 28451.0747430013
+
+To find 15% of 200, you can follow these steps:
+
+1.  **Convert the percentage to a decimal:**

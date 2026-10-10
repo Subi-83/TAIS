@@ -1,0 +1,8 @@
+request_id: c3680e7c-65ef-426c-bf33-49a3b577637e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 176
+
+What are the main components of a computer system and their functions
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

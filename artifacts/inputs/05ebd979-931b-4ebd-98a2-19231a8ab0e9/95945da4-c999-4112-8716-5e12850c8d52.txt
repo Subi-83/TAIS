@@ -1,0 +1,8 @@
+request_id: 95945da4-c999-4112-8716-5e12850c8d52
+model: gemma4:12b
+priority: normal
+max_output_tokens: 18
+
+Translate 'Hello' to Spanish.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

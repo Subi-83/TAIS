@@ -1,0 +1,6 @@
+request_id: 63625a86-88c9-4113-b376-c8e324b63b47
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the freezing point of water in Fahrenheit?

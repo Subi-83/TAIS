@@ -1,0 +1,7 @@
+request_id: 0decb290-0aa9-4387-8111-fa4b58053553
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 12
+ttft_ms: 20860.65647199939
+
+The square root of 81 is **9**.

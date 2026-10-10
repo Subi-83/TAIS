@@ -1,0 +1,6 @@
+request_id: 85688142-c734-45cb-b9e7-9534f1bb6c7d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 180
+
+Draft a polite email to a client explaining that their project will be delayed by two days due to a technical glitch.

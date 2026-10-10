@@ -1,0 +1,6 @@
+request_id: 1df3f265-5212-45a8-9229-cf2914aeb6b3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 945
+
+Explain the principles of clean code and SOLID design with Python examples showing both bad and improved versions.

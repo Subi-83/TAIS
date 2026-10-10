@@ -1,0 +1,6 @@
+request_id: 1c64ce62-430f-4386-8e27-5603a096c135
+model: gemma4:12b
+priority: normal
+max_output_tokens: 875
+
+Prove step by step that the square root of 2 is irrational, then explain why the proof works.

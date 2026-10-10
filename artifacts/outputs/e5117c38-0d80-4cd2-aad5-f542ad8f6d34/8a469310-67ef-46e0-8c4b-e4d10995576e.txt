@@ -1,0 +1,16 @@
+request_id: 8a469310-67ef-46e0-8c4b-e4d10995576e
+model: gemma4:12b
+input_tokens: 41
+output_tokens: 248
+ttft_ms: 36952.99226999941
+
+The evolution of the internet represents one of the most rapid technological shifts in human history, moving from a niche military project to a global nervous system. Its development can be categorized into three distinct eras: the foundational infrastructure, the birth of the World Wide Web, and the era of ubiquitous connectivity.
+
+### Historical Development
+
+**1. The Foundation: ARPANET and Packet Switching (1960s–1980s)**
+The internet’s origins lie in the Cold War era. The U.S. Department of Defense’s Advanced Research Projects Agency (ARPA) funded the creation of **ARPANET**. The core innovation was **packet switching**—the method of breaking data into small chunks to be sent across a network independently and reassembled at the destination. This was a departure from "circuit switching" (used in traditional telephony), allowing for a more resilient and decentralized network.
+
+In the 1970s, Vinton Cerf and Bob Kahn developed **TCP/IP (Transmission Control Protocol/Internet Protocol)**. This became the universal "language" of the internet, allowing different types of networks to communicate with one another, effectively creating an "internetwork."
+
+**2. The

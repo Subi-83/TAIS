@@ -1,0 +1,10 @@
+request_id: c2921c6b-e16f-4385-84a0-908d4f37fee7
+model: gemma4:12b
+input_tokens: 36
+output_tokens: 38
+ttft_ms: 419.39830600040295
+
+To boil an egg, follow these steps to achieve a perfect result:
+
+### 1. Preparation
+Place your eggs in a single layer at the bottom of a medium-sized saucepan.

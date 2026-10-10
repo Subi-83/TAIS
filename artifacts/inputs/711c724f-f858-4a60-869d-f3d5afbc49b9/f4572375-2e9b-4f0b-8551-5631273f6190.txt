@@ -1,0 +1,8 @@
+request_id: f4572375-2e9b-4f0b-8551-5631273f6190
+model: gemma4:12b
+priority: normal
+max_output_tokens: 40
+
+Tell me a short joke about a cat who thinks it's a dog.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

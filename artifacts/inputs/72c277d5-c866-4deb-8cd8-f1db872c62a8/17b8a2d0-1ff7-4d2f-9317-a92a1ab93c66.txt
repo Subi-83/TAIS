@@ -1,0 +1,6 @@
+request_id: 17b8a2d0-1ff7-4d2f-9317-a92a1ab93c66
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Summarize the main causes and effects of climate change.

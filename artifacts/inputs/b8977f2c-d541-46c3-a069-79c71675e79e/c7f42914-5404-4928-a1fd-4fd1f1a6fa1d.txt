@@ -1,0 +1,8 @@
+request_id: c7f42914-5404-4928-a1fd-4fd1f1a6fa1d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+List three healthy breakfast ideas for someone who is in a hurry.
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

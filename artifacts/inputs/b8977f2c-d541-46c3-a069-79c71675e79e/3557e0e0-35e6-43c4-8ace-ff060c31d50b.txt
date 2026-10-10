@@ -1,0 +1,8 @@
+request_id: 3557e0e0-35e6-43c4-8ace-ff060c31d50b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 150
+
+Write a professional email to a client explaining a slight delay in a project delivery.
+
+Benchmark variation 3: give a distinct answer while preserving the requested scope.

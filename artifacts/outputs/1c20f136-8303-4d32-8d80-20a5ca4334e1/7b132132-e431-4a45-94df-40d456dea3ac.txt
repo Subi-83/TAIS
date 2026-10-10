@@ -1,0 +1,7 @@
+request_id: 7b132132-e431-4a45-94df-40d456dea3ac
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 9
+ttft_ms: 11886.5496110011
+
+Mars is known as the Red Planet.

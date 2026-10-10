@@ -1,0 +1,6 @@
+request_id: ab77cc76-e199-45b3-aa5b-69b938063ed2
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the concept of supply and demand with an example.

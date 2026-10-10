@@ -1,14 +1,24 @@
 import axios from 'axios';
 
 export const getApiBaseUrl = () => {
-  return localStorage.getItem('d07_api_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+  const configuredUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+  const savedUrl = localStorage.getItem('d07_api_url');
+
+  // Older builds stored the mock backend's port as the gateway address. Migrate
+  // that value automatically so existing browsers reach the FastAPI gateway.
+  if (savedUrl === 'http://localhost:8001' || savedUrl === 'http://127.0.0.1:8001') {
+    localStorage.setItem('d07_api_url', configuredUrl);
+    return configuredUrl;
+  }
+  return savedUrl || configuredUrl;
 };
 
 export const API_BASE_URL = getApiBaseUrl();
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  // Local LLMs can need extra time for their first model load.
+  timeout: 130000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

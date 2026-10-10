@@ -1,0 +1,7 @@
+request_id: c2097555-2dbe-47fc-9fe4-fad131bea11c
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 9
+ttft_ms: 22490.61952500051
+
+The sun rises in the **east**.

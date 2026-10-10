@@ -1,0 +1,8 @@
+request_id: 914d4954-27d0-4a0d-a021-e57feeadc0e0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 45
+
+Tell me a joke about a robot.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

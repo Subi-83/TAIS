@@ -1,0 +1,6 @@
+request_id: db1cef0d-6681-49a9-81c7-9086e833b26a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+How many continents are there?

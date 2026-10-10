@@ -1,0 +1,7 @@
+request_id: 51af9fd9-acfc-4553-b92c-b076daae9ff0
+model: mock-echo-1
+input_tokens: 4
+output_tokens: 5
+ttft_ms: None
+
+[mock:mock-echo-1] Predict my tokens please

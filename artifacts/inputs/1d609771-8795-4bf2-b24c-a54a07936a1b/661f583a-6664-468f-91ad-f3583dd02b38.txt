@@ -1,0 +1,8 @@
+request_id: 661f583a-6664-468f-91ad-f3583dd02b38
+model: gemma4:12b
+priority: normal
+max_output_tokens: 512
+
+Explain the differences between various programming languages and their use cases
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

@@ -1,0 +1,6 @@
+request_id: ced4cd0d-fd03-4875-bf66-866b3230dc42
+model: gemma4:12b
+priority: normal
+max_output_tokens: 33
+
+Who wrote the play Romeo and Juliet?

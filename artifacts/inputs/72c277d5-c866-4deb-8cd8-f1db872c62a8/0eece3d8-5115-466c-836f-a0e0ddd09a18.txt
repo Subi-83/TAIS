@@ -1,0 +1,6 @@
+request_id: 0eece3d8-5115-466c-836f-a0e0ddd09a18
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Write a regular expression to validate an email address and explain each part.

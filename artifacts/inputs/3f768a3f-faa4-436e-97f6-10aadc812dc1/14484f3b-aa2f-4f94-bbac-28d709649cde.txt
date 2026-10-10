@@ -1,0 +1,6 @@
+request_id: 14484f3b-aa2f-4f94-bbac-28d709649cde
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Explain the difference between a marathon and a sprint in terms of physical endurance and muscle usage.

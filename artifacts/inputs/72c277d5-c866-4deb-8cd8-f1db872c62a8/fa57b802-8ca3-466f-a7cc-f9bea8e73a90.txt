@@ -1,0 +1,6 @@
+request_id: fa57b802-8ca3-466f-a7cc-f9bea8e73a90
+model: gemma4:12b
+priority: normal
+max_output_tokens: 770
+
+Explain how caching improves application performance and name two risks.

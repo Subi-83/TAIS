@@ -1,0 +1,6 @@
+request_id: b443cb41-37dd-474b-9e0d-49c9d769adec
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the capital of India?

@@ -1,0 +1,8 @@
+request_id: 8801ea05-d707-4c3e-89c5-0d751ebf75a2
+model: gemma4:12b
+priority: normal
+max_output_tokens: 380
+
+Write a Python script that can scrape headlines from a news website and save them into a JSON file, including error handling.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

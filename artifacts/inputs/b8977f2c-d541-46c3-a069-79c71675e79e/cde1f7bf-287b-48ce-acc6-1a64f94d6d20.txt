@@ -1,0 +1,8 @@
+request_id: cde1f7bf-287b-48ce-acc6-1a64f94d6d20
+model: gemma4:12b
+priority: normal
+max_output_tokens: 110
+
+Write a brief summary of the main themes in George Orwell's '1984'.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

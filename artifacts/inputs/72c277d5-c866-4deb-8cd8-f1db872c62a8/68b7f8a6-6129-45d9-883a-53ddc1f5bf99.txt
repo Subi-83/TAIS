@@ -1,0 +1,6 @@
+request_id: 68b7f8a6-6129-45d9-883a-53ddc1f5bf99
+model: gemma4:12b
+priority: normal
+max_output_tokens: 280
+
+Describe the main differences between Python lists and tuples.

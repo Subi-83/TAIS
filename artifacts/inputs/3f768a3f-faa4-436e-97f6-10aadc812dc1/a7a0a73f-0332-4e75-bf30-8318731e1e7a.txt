@@ -1,0 +1,6 @@
+request_id: a7a0a73f-0332-4e75-bf30-8318731e1e7a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 150
+
+Write a SQL query to select all users from a 'Users' table who signed up in the last 30 days and are marked as 'active'.

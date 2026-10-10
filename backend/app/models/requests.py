@@ -36,6 +36,7 @@ class InferenceResponse(BaseModel):
     input_token_method: Literal["mock_estimate", "provider_reported", "unavailable"] = "mock_estimate"
     output_token_method: Literal["mock_estimate", "provider_reported", "unavailable"] = "mock_estimate"
     simulated: bool = True
+    ttft_ms: float | None = None
 
 
 class RequestStatus(BaseModel):
@@ -46,3 +47,21 @@ class RequestStatus(BaseModel):
     queue_wait_ms: float | None = None
     error: str | None = None
     response: InferenceResponse | None = None
+    request_kind: Literal["chat", "prompt"] = "chat"
+    prompt_preview: str = ""
+    priority: Literal["low", "normal", "high"] = "normal"
+    input_tokens: int = 0
+    estimated_output_tokens: int = 0
+    estimated_cost: int = 0
+    scheduling_score: float = 0
+    assigned_backend: str | None = None
+    assigned_container_id: str | None = None
+    output_preview: str = ""
+    prediction_latency_ms: float = 0
+    output_prediction_source: str | None = None
+    inference_latency_ms: float = 0
+    total_latency_ms: float = 0
+    ttft_ms: float | None = None
+    actual_output_tokens: int | None = None
+    prediction_absolute_error: int | None = None
+    prediction_relative_error_pct: float | None = None

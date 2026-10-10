@@ -1,0 +1,6 @@
+request_id: 0514a96d-6e00-42f0-96f6-d04562019601
+model: gemma4:12b
+priority: normal
+max_output_tokens: 910
+
+Describe step by step how to deploy a three-tier web application on Ubuntu using Nginx, a Python backend and PostgreSQL, including security hardening.

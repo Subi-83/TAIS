@@ -1,0 +1,7 @@
+request_id: 2acb4dc5-872f-4529-b6fa-5b0cc3f2a5b3
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] recovery request 1

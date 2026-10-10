@@ -1,0 +1,6 @@
+request_id: d2047bb6-3d05-44c4-8546-3f2f61bd6cb6
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the difference between latency and throughput.

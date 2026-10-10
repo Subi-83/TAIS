@@ -1,0 +1,6 @@
+request_id: 79b64ef1-07e1-44c9-9f3e-8abd3202bd14
+model: mock-echo-1
+priority: normal
+max_output_tokens: 128
+
+[user] Explain queues.

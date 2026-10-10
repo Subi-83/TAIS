@@ -1,3 +1,4 @@
+import asyncio
 import json
 
 from fastapi import APIRouter, HTTPException, Request, status
@@ -5,9 +6,14 @@ from fastapi.responses import StreamingResponse
 
 from app.inference.mock_adapter import MockBackendError
 from app.inference.openai_compatible import RealInferenceError
+from pydantic import BaseModel, Field
 from app.models.requests import InferenceRequest, InferenceResponse, RequestStatus
 
 router = APIRouter(prefix="/api/requests", tags=["inference"])
+
+
+class BulkInferenceRequest(BaseModel):
+    requests: list[InferenceRequest] = Field(min_length=1, max_length=500)
 
 
 @router.post("", response_model=InferenceResponse, status_code=status.HTTP_200_OK)
@@ -20,6 +26,19 @@ async def create_request(payload: InferenceRequest, request: Request) -> Inferen
         raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
     except RuntimeError as exc:
         raise HTTPException(status_code=429, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+@router.post("/bulk", response_model=list[InferenceResponse])
+async def create_bulk_requests(payload: BulkInferenceRequest, request: Request) -> list[InferenceResponse]:
+    """Queue a chat batch together so the scheduler can choose its real order."""
+    try:
+        return await asyncio.gather(*(request.app.state.gateway.submit(item) for item in payload.requests))
+    except RuntimeError as exc:
+        raise HTTPException(status_code=429, detail=str(exc)) from exc
+    except RealInferenceError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 

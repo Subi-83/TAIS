@@ -26,7 +26,7 @@ const PROFILE_PRESETS = [
     description: 'High concurrency, small input & output token spans.',
     icon: <Zap className="h-4 w-4 text-blue-600" />,
     config: {
-      request_count: 1000,
+      request_count: 150,
       min_input_tokens: 16,
       max_input_tokens: 64,
       min_output_tokens: 32,
@@ -37,7 +37,7 @@ const PROFILE_PRESETS = [
       initial_backend_count: 3,
       min_backends: 2,
       max_backends: 6,
-      max_concurrency_per_backend: 32,
+      max_concurrency_per_backend: 4,
       queue_capacity: 500,
       scheduling_policy: 'token_aware',
     },
@@ -49,7 +49,7 @@ const PROFILE_PRESETS = [
     description: 'Large prompt context and extended token generation.',
     icon: <Cpu className="h-4 w-4 text-purple-600" />,
     config: {
-      request_count: 300,
+      request_count: 150,
       min_input_tokens: 512,
       max_input_tokens: 2048,
       min_output_tokens: 1024,
@@ -60,7 +60,7 @@ const PROFILE_PRESETS = [
       initial_backend_count: 4,
       min_backends: 3,
       max_backends: 8,
-      max_concurrency_per_backend: 16,
+      max_concurrency_per_backend: 4,
       queue_capacity: 250,
       scheduling_policy: 'token_aware',
     },
@@ -72,7 +72,7 @@ const PROFILE_PRESETS = [
     description: 'Heterogeneous mix of short chat prompts and deep reasoning.',
     icon: <Layers className="h-4 w-4 text-indigo-600" />,
     config: {
-      request_count: 600,
+      request_count: 150,
       min_input_tokens: 32,
       max_input_tokens: 1536,
       min_output_tokens: 64,
@@ -83,7 +83,7 @@ const PROFILE_PRESETS = [
       initial_backend_count: 3,
       min_backends: 2,
       max_backends: 6,
-      max_concurrency_per_backend: 24,
+      max_concurrency_per_backend: 4,
       queue_capacity: 400,
       scheduling_policy: 'token_aware',
     },
@@ -95,7 +95,7 @@ const PROFILE_PRESETS = [
     description: 'Sudden high arrival surge with simulated backend slowdown.',
     icon: <AlertTriangle className="h-4 w-4 text-amber-600" />,
     config: {
-      request_count: 800,
+      request_count: 150,
       min_input_tokens: 64,
       max_input_tokens: 512,
       min_output_tokens: 64,
@@ -106,7 +106,7 @@ const PROFILE_PRESETS = [
       initial_backend_count: 3,
       min_backends: 2,
       max_backends: 6,
-      max_concurrency_per_backend: 32,
+      max_concurrency_per_backend: 4,
       queue_capacity: 600,
       scheduling_policy: 'token_aware',
       slowdown_config: {
@@ -130,8 +130,9 @@ const PROFILE_PRESETS = [
 
 const DEFAULT_CONFIG = {
   profile: 'short_interactive',
+  model_id: 'gemma4:12b',
   name: 'Short Interactive Inference Benchmark',
-  request_count: 1000,
+  request_count: 150,
   min_input_tokens: 16,
   max_input_tokens: 64,
   min_output_tokens: 32,
@@ -142,7 +143,7 @@ const DEFAULT_CONFIG = {
   initial_backend_count: 3,
   min_backends: 2,
   max_backends: 6,
-  max_concurrency_per_backend: 32,
+  max_concurrency_per_backend: 4,
   queue_capacity: 500,
   scheduling_policy: 'token_aware',
   latency_target_ms: 150,
@@ -190,10 +191,10 @@ export const WorkloadTestingPage = () => {
   const validate = () => {
     const errs = {};
 
-    if (!config.request_count || config.request_count <= 0) {
-      errs.request_count = 'Must be > 0';
-    } else if (config.request_count > 50000) {
-      errs.request_count = 'Cannot exceed 50,000';
+    if (!config.request_count || config.request_count < 3) {
+      errs.request_count = 'Select at least 3 inputs';
+    } else if (config.request_count > 150) {
+      errs.request_count = 'Maximum is 150 Excel questions';
     }
 
     if (config.min_input_tokens <= 0) errs.min_input_tokens = 'Min tokens >= 1';
@@ -214,6 +215,9 @@ export const WorkloadTestingPage = () => {
 
     if (config.min_backends < 1) errs.min_backends = 'Min backends >= 1';
     if (config.max_backends < config.min_backends) errs.max_backends = 'Max cannot be < min';
+    if (!config.max_concurrency_per_backend || config.max_concurrency_per_backend < 1 || config.max_concurrency_per_backend > 32) {
+      errs.max_concurrency_per_backend = 'Must be between 1 and 32';
+    }
     if (
       config.initial_backend_count < config.min_backends ||
       config.initial_backend_count > config.max_backends
@@ -327,7 +331,7 @@ export const WorkloadTestingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="md:col-span-2">
+            <div>
               <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
                 Benchmark Name
               </label>
@@ -341,16 +345,19 @@ export const WorkloadTestingPage = () => {
 
             <div>
               <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
-                Scheduling Policy
+                Backend Model ID
               </label>
-              <select
-                value={config.scheduling_policy}
-                onChange={(e) => setConfig({ ...config, scheduling_policy: e.target.value })}
-                className="w-full rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-2.5 py-1.5 text-xs text-gray-900 dark:text-white focus:border-blue-600 focus:outline-hidden"
-              >
-                <option value="token_aware">Token-Aware Scheduling (D07)</option>
-                <option value="fifo">FIFO Baseline</option>
-              </select>
+              <input
+                type="text"
+                value={config.model_id}
+                onChange={(e) => setConfig({ ...config, model_id: e.target.value })}
+                placeholder="gemma4:12b"
+                className="w-full rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-mono text-gray-900 dark:text-white focus:border-blue-600 focus:outline-hidden"
+              />
+            </div>
+
+            <div className="rounded border border-blue-200 bg-blue-50 p-3 text-xs text-blue-800 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-300">
+              Both policies run automatically with identical Excel questions and deterministic output-token predictions: FIFO baseline and D07 token-aware.
             </div>
           </div>
         </div>
@@ -366,17 +373,16 @@ export const WorkloadTestingPage = () => {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
-                Total Request Count
-              </label>
+              <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">Number of Excel Questions</label>
               <input
                 type="number"
-                min="1"
-                max="50000"
+                min="3"
+                max="150"
                 value={config.request_count}
                 onChange={(e) => setConfig({ ...config, request_count: Number(e.target.value) })}
                 className="w-full rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-mono text-gray-900 dark:text-white focus:border-blue-600 focus:outline-hidden"
               />
+              <p className="mt-1 text-[11px] text-gray-500">Questions are loaded from the configured workbook. Predictions use the deterministic keyword formula and are exported for both FIFO and D07.</p>
               {errors.request_count && <p className="mt-1 text-[11px] text-rose-500">{errors.request_count}</p>}
             </div>
 
@@ -486,62 +492,34 @@ export const WorkloadTestingPage = () => {
           </div>
         </div>
 
-        {/* Section 3: Capacity Bounds */}
+        {/* Section 3: Gateway-managed capacity */}
         <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-2xs">
           <div className="flex items-center gap-2 border-b border-gray-200 dark:border-slate-800 pb-3 mb-4">
             <Server className="h-4 w-4 text-blue-600" />
             <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
-              3. Backend Capacity Limits & SLA Targets
+              3. Gateway-Managed Backend Capacity
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="rounded border border-blue-200 bg-blue-50 p-3 text-xs text-blue-800 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-300">
+              Each replica is independently tracked and accepts one in-flight request. The scheduler distributes work across all healthy replicas.
+            </div>
             <div>
               <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
-                Initial Backend Count
+                Backend Worker Replicas
               </label>
               <input
                 type="number"
                 min="1"
-                value={config.initial_backend_count}
-                onChange={(e) => setConfig({ ...config, initial_backend_count: Number(e.target.value) })}
+                max="32"
+                value={config.max_concurrency_per_backend}
+                onChange={(e) => setConfig({ ...config, max_concurrency_per_backend: Number(e.target.value) })}
                 className="w-full rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-mono"
               />
+              <p className="mt-1 text-[11px] text-gray-500">Maximum project-owned Ollama proxy workers available to this benchmark; actual Docker scaling must be enabled by the operator.</p>
+              {errors.max_concurrency_per_backend && <p className="mt-1 text-[11px] text-rose-500">{errors.max_concurrency_per_backend}</p>}
             </div>
-
-            <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
-                Min / Max Replicas
-              </label>
-              <div className="flex items-center gap-1.5">
-                <input
-                  type="number"
-                  value={config.min_backends}
-                  onChange={(e) => setConfig({ ...config, min_backends: Number(e.target.value) })}
-                  className="w-1/2 rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1.5 text-xs font-mono"
-                />
-                <span className="text-gray-400">-</span>
-                <input
-                  type="number"
-                  value={config.max_backends}
-                  onChange={(e) => setConfig({ ...config, max_backends: Number(e.target.value) })}
-                  className="w-1/2 rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1.5 text-xs font-mono"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
-                Queue Capacity
-              </label>
-              <input
-                type="number"
-                value={config.queue_capacity}
-                onChange={(e) => setConfig({ ...config, queue_capacity: Number(e.target.value) })}
-                className="w-full rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-mono"
-              />
-            </div>
-
             <div>
               <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">
                 Target SLA (ms)

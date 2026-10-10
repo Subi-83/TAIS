@@ -1,0 +1,6 @@
+request_id: 0d195efd-28c3-4159-aca7-625a40b0f223
+model: gemma4:12b
+priority: normal
+max_output_tokens: 43
+
+w7 w7 w7 w7 w7 w7 w7 w7 w7 w7 w7 w7 w7

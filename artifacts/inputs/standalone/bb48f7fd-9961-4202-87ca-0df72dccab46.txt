@@ -1,0 +1,6 @@
+request_id: bb48f7fd-9961-4202-87ca-0df72dccab46
+model: gemma4:12b
+priority: normal
+max_output_tokens: 128
+
+Say hello in 3 words

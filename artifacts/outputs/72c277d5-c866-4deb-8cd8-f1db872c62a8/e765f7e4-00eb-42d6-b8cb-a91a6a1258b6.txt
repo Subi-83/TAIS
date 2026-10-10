@@ -1,0 +1,11 @@
+request_id: e765f7e4-00eb-42d6-b8cb-a91a6a1258b6
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 30
+ttft_ms: 18689.320524999857
+
+HTTP stands for **Hypertext Transfer Protocol**.
+
+Here is a quick breakdown of what that means:
+
+*   **Hypertext:** Refers to

@@ -1,0 +1,6 @@
+request_id: fdeaa3fe-3de6-457a-aeea-b8e732631722
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Design a fault-tolerant file storage system with replication and automatic repair, explaining data placement, failure detection and recovery.

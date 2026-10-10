@@ -1,0 +1,8 @@
+request_id: 8f252060-97eb-45fe-8367-d80d00c2da20
+model: gemma4:12b
+priority: normal
+max_output_tokens: 110
+
+Write a short paragraph about the benefits of daily exercise.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

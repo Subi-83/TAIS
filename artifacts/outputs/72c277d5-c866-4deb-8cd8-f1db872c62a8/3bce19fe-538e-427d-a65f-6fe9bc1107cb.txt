@@ -1,0 +1,7 @@
+request_id: 3bce19fe-538e-427d-a65f-6fe9bc1107cb
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 11
+ttft_ms: 23134.740639001393
+
+The capital city of Tamil Nadu is **Chennai**.

@@ -1,0 +1,6 @@
+request_id: 10d3784a-8dc3-4090-a301-d0321e6871c7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the difference between TCP and UDP.

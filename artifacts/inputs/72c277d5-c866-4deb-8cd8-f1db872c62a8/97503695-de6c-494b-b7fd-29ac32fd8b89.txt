@@ -1,0 +1,6 @@
+request_id: 97503695-de6c-494b-b7fd-29ac32fd8b89
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Explain how the human digestive system processes food.

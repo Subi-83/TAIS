@@ -1,0 +1,8 @@
+request_id: 0232ab76-f11d-4bcb-b1d0-a94383b69e8e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 500
+
+Write a 500-word short story about a detective solving a mystery in a futuristic city.
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

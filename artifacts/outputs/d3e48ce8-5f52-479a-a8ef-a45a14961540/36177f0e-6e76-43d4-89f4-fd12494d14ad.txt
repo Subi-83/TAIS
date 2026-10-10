@@ -1,0 +1,9 @@
+request_id: 36177f0e-6e76-43d4-89f4-fd12494d14ad
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 30
+ttft_ms: 4986.41515700001
+
+Depending on the context, there are several opposites for "ancient." Here are the most common ones:
+
+### 1. Most Common (General)

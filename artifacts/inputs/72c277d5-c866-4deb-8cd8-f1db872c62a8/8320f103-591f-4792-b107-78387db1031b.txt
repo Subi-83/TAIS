@@ -1,0 +1,6 @@
+request_id: 8320f103-591f-4792-b107-78387db1031b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the opposite of "increase"?

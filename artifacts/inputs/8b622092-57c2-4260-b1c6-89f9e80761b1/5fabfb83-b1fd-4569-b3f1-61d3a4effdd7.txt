@@ -1,0 +1,6 @@
+request_id: 5fabfb83-b1fd-4569-b3f1-61d3a4effdd7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Name three primary colors.

@@ -1,0 +1,9 @@
+request_id: 1b421866-5c09-47df-8889-6ed4cc9f4ccf
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 17
+ttft_ms: 16719.676603999687
+
+The translation for "good morning" in Spanish is:
+
+**Buenos días**

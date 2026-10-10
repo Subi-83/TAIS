@@ -1,0 +1,16 @@
+request_id: f10d9823-dc8c-4979-b301-03f110018179
+model: gemma4:12b
+input_tokens: 40
+output_tokens: 95
+ttft_ms: 429.38840500028164
+
+Since you didn't specify the exact purpose of the meeting (e.g., a project update, a sales pitch, or a formal introduction), I have provided three variations based on different professional contexts.
+
+### Option 1: General/Project Update (Best for colleagues or existing clients)
+**Subject:** Meeting Request: [Project Name] Update / [Topic]
+
+Dear [Name],
+
+I hope your week is going well.
+
+I would like to schedule

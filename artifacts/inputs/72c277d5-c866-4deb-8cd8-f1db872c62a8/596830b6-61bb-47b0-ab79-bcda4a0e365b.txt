@@ -1,0 +1,6 @@
+request_id: 596830b6-61bb-47b0-ab79-bcda4a0e365b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 770
+
+Implement a basic byte-pair-encoding tokenizer in Python and explain each step of the algorithm.

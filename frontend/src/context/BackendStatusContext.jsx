@@ -8,7 +8,13 @@ export const BackendStatusProvider = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
   const [lastChecked, setLastChecked] = useState(null);
-  const [activeExperimentId, setActiveExperimentId] = useState('exp-d07-9481');
+  const [activeExperimentId, setActiveExperimentIdState] = useState(() => localStorage.getItem('d07_active_experiment') || null);
+
+  const setActiveExperimentId = (value) => {
+    setActiveExperimentIdState(value);
+    if (value) localStorage.setItem('d07_active_experiment', value);
+    else localStorage.removeItem('d07_active_experiment');
+  };
   const [apiUrl, setApiUrlState] = useState(getApiBaseUrl());
 
   // Demo mode

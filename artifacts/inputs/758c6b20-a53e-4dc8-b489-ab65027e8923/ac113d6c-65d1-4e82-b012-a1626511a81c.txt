@@ -1,0 +1,8 @@
+request_id: ac113d6c-65d1-4e82-b012-a1626511a81c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 312
+
+Outline the key principles of quantum mechanics and their applications
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

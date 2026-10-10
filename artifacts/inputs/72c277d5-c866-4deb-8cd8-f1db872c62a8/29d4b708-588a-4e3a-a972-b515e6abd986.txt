@@ -1,0 +1,6 @@
+request_id: 29d4b708-588a-4e3a-a972-b515e6abd986
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the capital of Japan?

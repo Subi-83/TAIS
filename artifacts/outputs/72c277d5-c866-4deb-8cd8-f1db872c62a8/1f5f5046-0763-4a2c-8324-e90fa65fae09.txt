@@ -1,0 +1,7 @@
+request_id: 1f5f5046-0763-4a2c-8324-e90fa65fae09
+model: gemma4:12b
+input_tokens: 20
+output_tokens: 3
+ttft_ms: 22340.46416000092
+
+Joyful

@@ -1,0 +1,21 @@
+request_id: bb3dbb80-241e-4215-8cdf-4a8afc715642
+model: gemma4:12b
+input_tokens: 35
+output_tokens: 128
+ttft_ms: 20625.12619900008
+
+This recipe produces the "classic" bakery-style chocolate chip cookie: a cookie with crisp, golden edges, a soft and chewy center, and a rich, buttery flavor.
+
+### **The Ultimate Homemade Chocolate Chip Cookies**
+*   **Prep time:** 20 minutes
+*   **Bake time:** 10–12 minutes
+*   **Yields:** Approx. 24 cookies
+
+---
+
+### **Ingredients**
+
+**The Dry Ingredients:**
+*   **All-purpose flour:** 2 ¼ cups (280g)
+*   **Baking soda:** 1 teaspoon
+

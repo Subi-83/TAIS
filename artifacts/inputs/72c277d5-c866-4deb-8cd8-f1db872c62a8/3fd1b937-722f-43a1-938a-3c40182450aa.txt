@@ -1,0 +1,6 @@
+request_id: 3fd1b937-722f-43a1-938a-3c40182450aa
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1155
+
+Write a detailed comparison of Kubernetes, Docker Swarm and Nomad covering architecture, scaling, networking and operational complexity.

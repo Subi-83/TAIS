@@ -1,0 +1,7 @@
+request_id: 29d4b708-588a-4e3a-a972-b515e6abd986
+model: gemma4:12b
+input_tokens: 20
+output_tokens: 9
+ttft_ms: 19151.647303000573
+
+The capital of Japan is **Tokyo**.

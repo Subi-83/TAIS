@@ -1,0 +1,8 @@
+request_id: 756a2819-9f1d-431f-8f46-831fa7951e3f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 16
+
+What is the capital of France?
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

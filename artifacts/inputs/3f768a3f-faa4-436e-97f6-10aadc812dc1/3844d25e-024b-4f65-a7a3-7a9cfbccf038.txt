@@ -1,0 +1,6 @@
+request_id: 3844d25e-024b-4f65-a7a3-7a9cfbccf038
+model: gemma4:12b
+priority: normal
+max_output_tokens: 50
+
+Write a haiku about the first snowfall of winter.

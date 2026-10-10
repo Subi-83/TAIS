@@ -1,0 +1,6 @@
+request_id: 7b32707a-3486-48a7-9a1c-0ea7d17451b8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain how photosynthesis works in simple terms suitable for a middle school student.

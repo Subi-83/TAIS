@@ -1,0 +1,8 @@
+request_id: 012020f8-3a8d-48e3-a87e-d546801f76fd
+model: gemma4:12b
+priority: normal
+max_output_tokens: 408
+
+Analyze the role of artificial intelligence in modern healthcare systems
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

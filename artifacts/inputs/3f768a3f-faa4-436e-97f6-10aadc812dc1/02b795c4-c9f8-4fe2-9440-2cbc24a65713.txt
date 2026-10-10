@@ -1,0 +1,6 @@
+request_id: 02b795c4-c9f8-4fe2-9440-2cbc24a65713
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Write a 200-word product description for a high-end noise-canceling headphone designed for frequent flyers.

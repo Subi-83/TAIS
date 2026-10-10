@@ -1,0 +1,6 @@
+request_id: b5b06869-a2c9-46c7-b42c-ca55bf58ebe1
+model: gemma4:12b
+priority: normal
+max_output_tokens: 800
+
+Create a 3-day itinerary for a solo traveler visiting Paris for the first time, focusing on art and history.

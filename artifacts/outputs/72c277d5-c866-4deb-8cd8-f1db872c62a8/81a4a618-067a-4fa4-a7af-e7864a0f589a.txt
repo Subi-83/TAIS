@@ -1,0 +1,7 @@
+request_id: 81a4a618-067a-4fa4-a7af-e7864a0f589a
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 9
+ttft_ms: 13586.831873999472
+
+Leonardo da Vinci painted the Mona Lisa.

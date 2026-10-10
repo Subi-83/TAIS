@@ -1,0 +1,6 @@
+request_id: c81ba8da-a35a-40d3-91ad-a7c0887770c6
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the currency of the United Kingdom?

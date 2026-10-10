@@ -1,0 +1,15 @@
+request_id: 795d1116-d520-4a20-be8c-948da08d9527
+model: gemma4:12b
+input_tokens: 41
+output_tokens: 176
+ttft_ms: 2591.4268679998713
+
+A computer system is a complex integration of hardware and software components working together to process data into meaningful information. These components can be categorized into four primary functional areas:
+
+### 1. The Central Processing Unit (CPU)
+Often referred to as the "brain" of the computer, the CPU is responsible for executing instructions and performing calculations. It consists of three sub-components:
+*   **Arithmetic Logic Unit (ALU):** Performs all mathematical calculations (addition, subtraction) and logical operations (AND, OR, NOT).
+*   **Control Unit (CU):** Acts as the "manager," directing the flow of data between the CPU and other hardware components, and ensuring instructions are executed in the correct sequence.
+*   **Registers:** Small, high-speed storage locations used to hold immediate data and instructions currently being processed.
+
+### 2. Memory

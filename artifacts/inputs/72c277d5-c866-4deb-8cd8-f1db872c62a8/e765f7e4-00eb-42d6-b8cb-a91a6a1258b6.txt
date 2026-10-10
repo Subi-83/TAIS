@@ -1,0 +1,6 @@
+request_id: e765f7e4-00eb-42d6-b8cb-a91a6a1258b6
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What does HTTP stand for?

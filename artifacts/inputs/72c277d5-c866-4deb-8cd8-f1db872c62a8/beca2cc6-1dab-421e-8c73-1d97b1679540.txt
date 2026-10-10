@@ -1,0 +1,6 @@
+request_id: beca2cc6-1dab-421e-8c73-1d97b1679540
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain what recursion is and show a factorial example in Python.

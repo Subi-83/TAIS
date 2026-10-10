@@ -1,0 +1,6 @@
+request_id: e34c0dd8-53e0-4138-af30-a9569911b382
+model: gemma4:12b
+priority: normal
+max_output_tokens: 310
+
+Explain the main approaches to distributed database consistency, including the CAP theorem, eventual consistency and consensus, with examples.

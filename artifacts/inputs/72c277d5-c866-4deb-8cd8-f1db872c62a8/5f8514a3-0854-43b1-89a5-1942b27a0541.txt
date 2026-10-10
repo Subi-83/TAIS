@@ -1,0 +1,6 @@
+request_id: 5f8514a3-0854-43b1-89a5-1942b27a0541
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1120
+
+Analyze the advantages and disadvantages of nuclear power compared with solar and wind, covering cost, safety, waste and grid reliability.

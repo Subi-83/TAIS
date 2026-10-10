@@ -1,0 +1,6 @@
+request_id: 90ce2b06-fd7f-4918-ab7f-90391a5eb044
+model: gemma4:12b
+priority: normal
+max_output_tokens: 700
+
+Create a 7-day meal plan for someone who is vegan and allergic to peanuts.

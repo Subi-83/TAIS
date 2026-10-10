@@ -1,0 +1,8 @@
+request_id: 346af553-ee0b-471e-a988-b12bb8635cd4
+model: gemma4:12b
+priority: normal
+max_output_tokens: 750
+
+Write a comprehensive guide on how to start a small backyard vegetable garden from scratch.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

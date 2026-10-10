@@ -1,0 +1,8 @@
+request_id: c106d598-c8c7-4f37-9562-c9c755947d95
+model: gemma4:12b
+priority: normal
+max_output_tokens: 248
+
+Discuss the historical development of the internet and its impact on communication
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

@@ -1,0 +1,6 @@
+request_id: a361403b-8dc2-4018-a66e-15bb6d6df7e0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 550
+
+Write a cover letter for a Junior Data Analyst position, highlighting experience with Excel and SQL.

@@ -1,0 +1,11 @@
+request_id: 6da34074-1ff7-4fa3-88ac-923982afcde0
+model: gemma4:12b
+input_tokens: 18
+output_tokens: 25
+ttft_ms: 11380.917943000895
+
+The three primary colors are:
+
+1. **Red**
+2. **Yellow**
+3. **Blue**

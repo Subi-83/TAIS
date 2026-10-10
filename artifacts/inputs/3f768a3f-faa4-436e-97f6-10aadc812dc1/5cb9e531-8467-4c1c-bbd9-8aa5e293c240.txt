@@ -1,0 +1,6 @@
+request_id: 5cb9e531-8467-4c1c-bbd9-8aa5e293c240
+model: gemma4:12b
+priority: normal
+max_output_tokens: 280
+
+List 10 different ways to reduce electricity consumption in a residential household.

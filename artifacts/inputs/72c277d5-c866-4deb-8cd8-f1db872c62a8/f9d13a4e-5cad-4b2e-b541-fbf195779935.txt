@@ -1,0 +1,6 @@
+request_id: f9d13a4e-5cad-4b2e-b541-fbf195779935
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What does RAM stand for?

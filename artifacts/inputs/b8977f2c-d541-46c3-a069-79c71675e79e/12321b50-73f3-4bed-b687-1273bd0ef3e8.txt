@@ -1,0 +1,8 @@
+request_id: 12321b50-73f3-4bed-b687-1273bd0ef3e8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 140
+
+Write a Python function that takes a list of numbers and returns only the even ones.
+
+Benchmark variation 3: give a distinct answer while preserving the requested scope.

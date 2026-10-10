@@ -1,0 +1,8 @@
+request_id: 75a9ff6c-6ef9-4143-8160-dff9d69631a5
+model: gemma4:12b
+priority: normal
+max_output_tokens: 35
+
+Tell me a short joke about a programmer and a broken coffee machine.
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

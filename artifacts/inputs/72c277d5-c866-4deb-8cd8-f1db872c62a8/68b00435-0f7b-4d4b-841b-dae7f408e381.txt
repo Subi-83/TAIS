@@ -1,0 +1,6 @@
+request_id: 68b00435-0f7b-4d4b-841b-dae7f408e381
+model: gemma4:12b
+priority: normal
+max_output_tokens: 723
+
+Design the architecture of a scalable URL shortener that handles 100 million requests per day, covering database choice, caching, ID generation and failure handling.

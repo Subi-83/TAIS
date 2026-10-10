@@ -1,0 +1,6 @@
+request_id: 2753a716-9a48-471d-bb6c-a5339557e227
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1085
+
+Write a comprehensive security checklist for a web application covering authentication, input validation, session management, dependencies and deployment.

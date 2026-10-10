@@ -1,0 +1,8 @@
+request_id: d451406a-d214-47cc-a66f-20bfbe56a0c0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 160
+
+Summarize the key plot points of the movie 'Inception' in about 150 words.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

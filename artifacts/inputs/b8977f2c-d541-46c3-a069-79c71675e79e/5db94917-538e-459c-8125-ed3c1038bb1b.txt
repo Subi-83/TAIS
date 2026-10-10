@@ -1,0 +1,8 @@
+request_id: 5db94917-538e-459c-8125-ed3c1038bb1b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Translate the phrase 'Where is the nearest train station?' into Spanish.
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

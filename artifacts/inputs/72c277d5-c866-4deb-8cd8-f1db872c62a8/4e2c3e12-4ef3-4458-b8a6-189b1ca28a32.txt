@@ -1,0 +1,6 @@
+request_id: 4e2c3e12-4ef3-4458-b8a6-189b1ca28a32
+model: gemma4:12b
+priority: normal
+max_output_tokens: 300
+
+Explain how large language models are trained and fine-tuned, covering pretraining, instruction tuning, reinforcement learning from human feedback and evaluation.

@@ -1,0 +1,6 @@
+request_id: 980d419a-8ba7-4cad-b018-07560fa2ce31
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe the stages of the software development life cycle.

@@ -1,0 +1,9 @@
+request_id: 947419bc-ceb2-4454-ab4e-b889d3ea16a7
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 30
+ttft_ms: 18182.632339998236
+
+CPU stands for **Central Processing Unit**.
+
+It is often referred to as the "brain" of the computer because it is the primary component responsible for

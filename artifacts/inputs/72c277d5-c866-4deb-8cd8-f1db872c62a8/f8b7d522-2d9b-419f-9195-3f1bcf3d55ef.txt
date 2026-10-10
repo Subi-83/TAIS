@@ -1,0 +1,6 @@
+request_id: f8b7d522-2d9b-419f-9195-3f1bcf3d55ef
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1120
+
+Write a comprehensive guide to preparing for a system design interview, with a framework, common pitfalls and three worked examples.

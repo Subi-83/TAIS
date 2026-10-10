@@ -1,0 +1,6 @@
+request_id: e45cacf4-4085-45ef-94df-850805e43f9c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 910
+
+Write a detailed lesson outline to teach high school students about renewable energy, including activities, assessment and resources.

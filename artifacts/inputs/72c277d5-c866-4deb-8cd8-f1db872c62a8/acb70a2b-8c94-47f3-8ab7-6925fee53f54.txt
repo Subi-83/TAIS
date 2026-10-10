@@ -1,0 +1,6 @@
+request_id: acb70a2b-8c94-47f3-8ab7-6925fee53f54
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Explain what Docker containers are and how they differ from virtual machines.

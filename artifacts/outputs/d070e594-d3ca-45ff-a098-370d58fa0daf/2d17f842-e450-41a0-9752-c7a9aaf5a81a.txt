@@ -1,0 +1,7 @@
+request_id: 2d17f842-e450-41a0-9752-c7a9aaf5a81a
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 13
+ttft_ms: 2615.096943000026
+
+**William Shakespeare** wrote the play *Romeo and Juliet*.

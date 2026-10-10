@@ -1,0 +1,6 @@
+request_id: b9deb75b-3a50-4ddd-8003-d0b462407370
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1260
+
+Write a detailed project proposal for a campus smart-attendance system, including objectives, architecture, timeline, budget and risks.

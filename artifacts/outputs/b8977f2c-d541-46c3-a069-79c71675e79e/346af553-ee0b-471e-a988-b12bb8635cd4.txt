@@ -1,0 +1,18 @@
+request_id: 346af553-ee0b-471e-a988-b12bb8635cd4
+model: gemma4:12b
+input_tokens: 48
+output_tokens: 750
+ttft_ms: 51704.35974299835
+
+Starting a backyard garden is one of the most rewarding ways to connect with nature, improve your diet, and save money. However, many beginners fail because they treat gardening like a one-time task rather than a biological process.
+
+This guide follows a **"Foundation-First"** approach, ensuring you build a garden that thrives year after year, rather than just surviving the first month.
+
+---
+
+### Phase 1: The Blueprint (Planning)
+Before you pick up a shovel, you must evaluate your environment. A garden's success is 80% preparation and 20% execution.
+
+**1. Location, Location, Location**
+*   **Sunlight:** Most vegetables need **6–8 hours of direct sunlight**. Observe your yard throughout the day. A spot that looks sunny at 10:00 AM might be shaded by a fence or tree by 2:00 PM.
+*   **

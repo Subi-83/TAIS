@@ -1,0 +1,23 @@
+request_id: 3fef43d6-c07c-48ff-92d0-05aa8ae991df
+model: gemma4:12b
+input_tokens: 52
+output_tokens: 550
+ttft_ms: 742.9204669997489
+
+The hum of the Chronos-Sphere didn’t fade so much as it curdled, turning from a melodic vibration into a jagged, metallic scream. Elias felt his teeth ache as the world outside the reinforced glass smeared into a kaleidoscope of grey and sepia. Then, with a jolt that threw him against the padded bulkhead, the motion stopped.
+
+Silence followed—heavy, thick, and smelling of coal smoke.
+
+Elias checked the console. The temporal stabilizer was a melted husk of copper and silicon. The "Return" light flickered once, a dying heartbeat, and then went dark. He was no longer in 2144. He was in 1888.
+
+He stepped out of the sphere, which was hidden behind a stack of rotting timber in a damp alleyway. The air hit him like a physical blow; it was heavy with the stench of horse manure, soot, and unwashed bodies. He adjusted his synthetic fibers, which looked like heavy wool to the untrained eye, and pulled his collar up.
+
+He emerged into a street that felt like a living, breathing organism of grime. Gas lamps flickered like dying stars, casting long, distorted shadows against cobblestones slick with rain. Men in top hats and heavy overcoats hurried past, their faces obscured by the gloom. Women in voluminous skirts moved like ghosts, their voices hushed in the evening air.
+
+Elias felt a primal surge of terror. He was a man of the future—a man who knew the secrets of genetic editing, the mechanics of fusion, and the layout of the stars. Yet, here, he was a man with no currency, no identity, and a malfunctioning machine that was now nothing more than a high-tech coffin.
+
+He spent his first week in a state of vibrating anxiety, hiding in a boarding house in Whitechapel. He learned quickly that his "modern" accent was a liability; he had to flatten his vowels and adopt a weary, working-class cadence. He traded a small, high-grade titanium watch—a useless trinket to him, but a fortune to a local jeweler—for a suit of rough tweed and a meager sum of shillings.
+
+Months bled into a year. The initial panic subsided into a dull, aching melancholy. He found work as a clockmaker’s apprentice. His knowledge of gears and escapements made him a prodigy in the eyes of his master, a grumpy man named Mr. Abernathy. Elias spent his days repairing pocket watches, his hands moving with a precision that bordered on the supernatural.
+
+Sometimes, at night, he would sit by a small fire and look at his hands. He missed the glow of holographic

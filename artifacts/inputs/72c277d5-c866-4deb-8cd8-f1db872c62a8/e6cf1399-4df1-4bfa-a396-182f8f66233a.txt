@@ -1,0 +1,6 @@
+request_id: e6cf1399-4df1-4bfa-a396-182f8f66233a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1155
+
+Implement a binary search tree in Python with insert, delete, search and in-order traversal, and analyze the complexity of each operation.

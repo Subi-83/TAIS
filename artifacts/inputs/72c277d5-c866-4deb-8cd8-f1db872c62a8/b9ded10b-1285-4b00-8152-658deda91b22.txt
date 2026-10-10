@@ -1,0 +1,6 @@
+request_id: b9ded10b-1285-4b00-8152-658deda91b22
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Describe in depth how a modern CPU executes instructions, including pipelining, branch prediction, caches and out-of-order execution.

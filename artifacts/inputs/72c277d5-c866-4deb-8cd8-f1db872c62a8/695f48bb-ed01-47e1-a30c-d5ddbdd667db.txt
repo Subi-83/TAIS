@@ -1,0 +1,6 @@
+request_id: 695f48bb-ed01-47e1-a30c-d5ddbdd667db
+model: gemma4:12b
+priority: normal
+max_output_tokens: 240
+
+Compare electric cars and petrol cars in terms of cost and environment.

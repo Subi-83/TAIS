@@ -1,0 +1,7 @@
+request_id: b20d1f40-4525-4c0d-90ff-0cfdfd72857b
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] fault_peak request 0

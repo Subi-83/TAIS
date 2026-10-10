@@ -1,0 +1,6 @@
+request_id: 40bc772e-fb3a-433d-b200-886f9e539fa3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 33
+
+Which is bigger, 0.5 or 0.25?

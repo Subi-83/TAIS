@@ -1,0 +1,6 @@
+request_id: 0179e7f2-9a21-472e-8922-c7e903ba58de
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Explain what an API is to a beginner.

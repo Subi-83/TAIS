@@ -1,0 +1,8 @@
+request_id: 40fed873-db95-4c40-9201-d67bfcc3e741
+model: gemma4:12b
+priority: normal
+max_output_tokens: 850
+
+Provide a detailed analysis of the impact of social media on modern communication and human relationships.
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

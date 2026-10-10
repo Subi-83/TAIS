@@ -1,0 +1,6 @@
+request_id: d803fae6-2561-4975-9972-5f367b79a0f3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 840
+
+Solve step by step: a train leaves a station at 60 km/h and another leaves one hour later at 90 km/h on the same track. When and where does the second catch the first? Then generalize the solution into a formula.

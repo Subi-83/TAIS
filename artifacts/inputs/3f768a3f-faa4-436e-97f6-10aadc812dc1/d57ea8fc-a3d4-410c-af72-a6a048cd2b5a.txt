@@ -1,0 +1,6 @@
+request_id: d57ea8fc-a3d4-410c-af72-a6a048cd2b5a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 300
+
+Provide a step-by-step recipe for making homemade guacamole with a list of ingredients.

@@ -1,5 +1,42 @@
 # Token-Aware Inference Request Scheduler
 
+## Ollama + Docker quick start
+
+The Docker stack runs the React frontend and scheduling gateway and connects the
+gateway to Ollama on the Windows host. Start Ollama and then the stack:
+
+```powershell
+ollama pull gemma4:12b
+ollama serve
+docker compose up --build
+```
+
+Open `http://localhost:5173`. The token-aware policy uses
+`estimated_cost = input_tokens + predefined_output_tokens`, followed by
+`score = estimated_cost - aging_weight * wait_time_seconds`; the lowest score
+runs first. Each logical backend worker processes one request at a time. A new
+worker is enabled whenever the queue exceeds another 20-request boundary, up to
+`SCALING_MAX_REPLICAS`.
+
+The gateway does not run an LLM. It loads benchmark questions from
+`WORKLOAD_EXCEL_PATH` and predicts output tokens with a deterministic keyword
+heuristic. `BACKEND_OLLAMA_MODEL` (default `gemma4:12b`) exclusively handles
+scheduled inference through `OLLAMA_BASE_URL`. Startup never downloads models;
+a missing backend model produces a diagnostic with the required pull command.
+`BACKEND_REPLICA_COUNT` controls how many independently scheduled logical
+workers share that backend model endpoint (Docker Compose starts with four).
+
+Submit a chat batch to `POST /api/requests/bulk` with this shape:
+
+```json
+{
+  "requests": [
+    {"model": "gemma4:12b", "messages": [{"role": "user", "content": "Hello"}]},
+    {"model": "gemma4:12b", "messages": [{"role": "user", "content": "Explain queues"}]}
+  ]
+}
+```
+
 This repository currently implements **Phase 2**: a FastAPI gateway that validates inference requests and forwards them either to a deterministic mock backend or to a configured OpenAI-compatible model server such as vLLM.
 
 The gateway never loads an LLM itself. It provides gateway-level scheduling, SSE monitoring, experiments, SQLite persistence, dry-run scaling decisions, and labeled token accounting; model-server GPU batching and real replica orchestration remain external to the gateway.
@@ -234,7 +271,10 @@ Real mode requires `LLM_BASE_URL` and `LLM_MODEL_ID` at startup. Connection, aut
 
 ### Ollama
 
-Ollama is also supported for non-streaming local chat inference. Pull the chosen model first, then use `LLM_PROVIDER=ollama`, `LLM_BASE_URL=http://127.0.0.1:11434`, and its exact installed model name as `LLM_MODEL_ID`. The gateway verifies it through Ollama's `/api/tags` endpoint.
+Ollama is also supported for local chat inference. Set `LLM_PROVIDER=ollama`,
+`OLLAMA_BASE_URL=http://127.0.0.1:11434`, and
+`BACKEND_OLLAMA_MODEL=gemma4:12b`. The application verifies the exact backend
+model through Ollama's `/api/tags` endpoint and never silently substitutes it.
 
 ## Troubleshooting
 
@@ -244,6 +284,24 @@ Ollama is also supported for non-streaming local chat inference. Pull the chosen
 | `ModuleNotFoundError` | Activate `.venv`, reinstall with `python -m pip install -r requirements.txt`, and set `PYTHONPATH`. |
 | Port already in use | Stop the process using port 8000/8001, or choose another backend port and update `MOCK_BACKEND_URL` to match. |
 | Request returns `422` | Send exactly one of `prompt` or non-empty `messages`; `max_output_tokens` must be from 1 to 4096. |
+
+## Docker worker autoscaling
+
+Real worker lifecycle management is opt-in. Set `DOCKER_WORKER_MANAGER_ENABLED=true`,
+`SCALING_DRY_RUN=false`, and configure the minimum, maximum, and idle timeout.
+The gateway then creates only containers labelled
+`com.tais.worker-owner=tais-worker-manager`; ownership is revalidated before
+stop or removal. One Compose-managed worker remains warm when the minimum is one.
+
+The Docker socket mount grants privileged control of the Docker daemon. Enable it
+only on a trusted host, protect management endpoints with `MANAGEMENT_API_KEY`,
+and do not expose the gateway management API publicly. The manager never stops
+the host Ollama process or containers without its exact ownership label.
+
+Lifecycle status and persisted startup/removal events are available from
+`GET /api/scaling/status`. Development fault observations are available from
+`GET /api/fault-recovery/latest`; creating a run requires mock mode and
+`ENABLE_DEV_FAULT_INJECTION=true`.
 
 ## Verification status
 

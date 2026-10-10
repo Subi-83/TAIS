@@ -1,0 +1,9 @@
+request_id: 34dca089-11c5-4611-963d-d3513dec52d7
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 30
+ttft_ms: 6414.457971000957
+
+Plants primarily absorb **carbon dioxide (CO₂)** from the air.
+
+They do this through a process called **photosynthesis**, where they use sunlight

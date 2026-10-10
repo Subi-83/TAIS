@@ -1,0 +1,16 @@
+request_id: 2def7004-dc1c-4e84-a91d-c3681a3a1687
+model: gemma4:12b
+input_tokens: 40
+output_tokens: 95
+ttft_ms: 721.9684120000238
+
+Since you didn't specify the exact purpose of the meeting (e.g., a project update, a sales pitch, or a formal introduction), I have provided three variations based on different professional contexts.
+
+### Option 1: Standard Professional (Best for colleagues or existing partners)
+**Subject:** Meeting Request: [Project Name/Topic] Discussion
+
+Dear [Name],
+
+I hope you’re having a productive week.
+
+I would like to schedule a brief

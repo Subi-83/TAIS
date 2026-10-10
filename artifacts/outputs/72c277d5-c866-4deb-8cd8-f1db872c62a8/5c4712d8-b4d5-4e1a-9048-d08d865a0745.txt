@@ -1,0 +1,11 @@
+request_id: 5c4712d8-b4d5-4e1a-9048-d08d865a0745
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 30
+ttft_ms: 20130.498041000465
+
+HTML stands for **HyperText Markup Language**.
+
+Here is a quick breakdown of what those terms mean:
+
+*   **HyperText:** Refers

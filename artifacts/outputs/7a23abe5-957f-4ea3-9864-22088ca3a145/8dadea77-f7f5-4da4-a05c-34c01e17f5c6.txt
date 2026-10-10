@@ -1,0 +1,7 @@
+request_id: 8dadea77-f7f5-4da4-a05c-34c01e17f5c6
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] baseline request 2

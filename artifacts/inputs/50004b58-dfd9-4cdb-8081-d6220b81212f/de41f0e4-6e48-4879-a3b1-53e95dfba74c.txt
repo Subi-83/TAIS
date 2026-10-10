@@ -1,0 +1,6 @@
+request_id: de41f0e4-6e48-4879-a3b1-53e95dfba74c
+model: mock-echo-1
+priority: normal
+max_output_tokens: 20
+
+fault_initiation request 2

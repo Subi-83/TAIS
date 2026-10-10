@@ -1,0 +1,17 @@
+request_id: 3a58b788-1dde-4d9e-a0b3-55fcc97d2e50
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 133
+ttft_ms: 63871.04678900141
+
+To understand photosynthesis, think of it as the way plants **cook their own food.** 
+
+Since plants can’t go to a grocery store, they have to make their own energy using three basic "ingredients" from the environment.
+
+Here is the simple breakdown:
+
+### 1. The Ingredients
+To make food, a plant needs three things:
+*   **Sunlight:** This is the energy (the "stove").
+*   **Water:** Absorbed from the ground through the roots.
+*   **Carbon Dioxide ($CO_2$):** A gas that plants breathe in from the air (the same gas humans breathe out).

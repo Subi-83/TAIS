@@ -1,0 +1,7 @@
+request_id: c05d8ea9-57e7-4b5d-a11b-ec99e59355f4
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 12
+ttft_ms: 22245.703092999975
+
+The largest planet in our solar system is **Jupiter**.

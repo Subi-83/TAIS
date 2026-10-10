@@ -1,18 +1,69 @@
 services:
   mock-backend:
-    build:
-      context: .
-      dockerfile: backend/mock_backend/Dockerfile
-    ports: ["8001:8001"]
+    image: tais-gateway:latest
+    command: ["uvicorn", "mock_backend.main:app", "--host", "0.0.0.0", "--port", "8001"]
+
+  inference-worker-1: &inference-worker
+    image: tais-gateway:latest
+    command: ["uvicorn", "ollama_worker.main:app", "--host", "0.0.0.0", "--port", "8100"]
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      WORKER_ID: inference-worker-1
+      REQUEST_TIMEOUT_SECONDS: 120
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes:
+      - ./backend:/service/backend
+    labels:
+      com.tais.worker-owner: tais-worker-manager
+      com.tais.role: inference-worker
+      com.tais.worker-id: inference-worker-1
+      com.tais.endpoint: http://inference-worker-1:8100
+
   gateway:
     build: .
     environment:
-      INFERENCE_MODE: mock
-      MOCK_BACKEND_URL: http://mock-backend:8001
-      SCHEDULER_POLICY: fifo
+      INFERENCE_MODE: real
+      LLM_PROVIDER: ollama
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      BACKEND_OLLAMA_MODEL: gemma4:12b
+      TOKEN_PREDICTOR_MODEL: qwen3:4b-q4_K_M
+      TOKEN_PREDICTOR_ENABLED: "true"
+      BACKEND_REPLICA_COUNT: 1
+      WORKLOAD_EXCEL_PATH: /service/backend/data/D07_150_Questions_Token_Predictor.xlsx
+      LLM_BACKENDS_JSON: '[{"id":"inference-worker-1","provider":"ollama","base_url":"http://inference-worker-1:8100","model":"gemma4:12b","max_concurrency":1}]'
+      REQUEST_TIMEOUT_SECONDS: 120
+      SCHEDULER_POLICY: token_aware
+      SCHEDULER_AGING_WEIGHT: 1.0
+      SCHEDULER_MAX_WAIT_SECONDS: 2
+      SCHEDULER_MAX_BYPASS: 8
+      STARVATION_THRESHOLD_MS: 2000
+      STARVATION_SLOWDOWN_LIMIT: 3.0
+      SCHEDULER_DEFAULT_OUTPUT_TOKENS: 128
+      SCALING_MIN_REPLICAS: ${SCALING_MIN_REPLICAS:-0}
+      SCALING_MAX_REPLICAS: 5
+      SCALING_QUEUE_PER_REPLICA: 1
+      SCALING_DRY_RUN: false
+      DOCKER_WORKER_MANAGER_ENABLED: ${DOCKER_WORKER_MANAGER_ENABLED:-false}
+      DOCKER_WORKER_IMAGE: tais-gateway:latest
+      DOCKER_WORKER_NETWORK: tais_default
+      DOCKER_WORKER_IDLE_TIMEOUT_SECONDS: ${DOCKER_WORKER_IDLE_TIMEOUT_SECONDS:-30}
+      BACKEND_MAX_RETRIES: 2
+      BACKEND_RETRY_BACKOFF_SECONDS: 1
+      BACKEND_CIRCUIT_FAILURE_THRESHOLD: 3
+      BACKEND_CIRCUIT_RECOVERY_SECONDS: 15
+      DATABASE_URL: sqlite:////data/scheduler.db
+      ARTIFACTS_ROOT: /data/artifacts
       CORS_ORIGINS: http://localhost:5173
     ports: ["8000:8000"]
-    depends_on: [mock-backend]
+    volumes:
+      - gateway-data:/data
+      - ./artifacts:/data/artifacts
+      - ./backend:/service/backend
+      - //var/run/docker.sock:/var/run/docker.sock
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - inference-worker-1
 
   frontend:
     build:
@@ -22,3 +73,6 @@ services:
       VITE_API_BASE_URL: http://localhost:8000
     ports: ["5173:5173"]
     depends_on: [gateway]
+
+volumes:
+  gateway-data:

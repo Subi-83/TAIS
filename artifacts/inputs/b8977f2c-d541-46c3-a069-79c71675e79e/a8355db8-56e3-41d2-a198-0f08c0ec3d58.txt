@@ -1,0 +1,8 @@
+request_id: a8355db8-56e3-41d2-a198-0f08c0ec3d58
+model: gemma4:12b
+priority: normal
+max_output_tokens: 180
+
+List 5 benefits of regular exercise for mental health with a brief description for each.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

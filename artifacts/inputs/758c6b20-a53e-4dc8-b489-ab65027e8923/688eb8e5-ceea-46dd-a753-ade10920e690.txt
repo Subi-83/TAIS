@@ -1,0 +1,8 @@
+request_id: 688eb8e5-ceea-46dd-a753-ade10920e690
+model: gemma4:12b
+priority: normal
+max_output_tokens: 60
+
+Describe the water cycle and its importance to ecosystems
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

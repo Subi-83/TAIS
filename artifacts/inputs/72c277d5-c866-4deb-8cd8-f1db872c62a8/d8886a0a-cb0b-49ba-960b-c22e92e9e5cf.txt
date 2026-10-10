@@ -1,0 +1,6 @@
+request_id: d8886a0a-cb0b-49ba-960b-c22e92e9e5cf
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the abbreviation for kilometer?

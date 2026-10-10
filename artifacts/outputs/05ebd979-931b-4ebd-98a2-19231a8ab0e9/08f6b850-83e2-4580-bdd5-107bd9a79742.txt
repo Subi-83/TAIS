@@ -1,0 +1,9 @@
+request_id: 08f6b850-83e2-4580-bdd5-107bd9a79742
+model: gemma4:12b
+input_tokens: 37
+output_tokens: 17
+ttft_ms: 680.9790520001116
+
+Why did the robot go to the doctor?
+
+Because it had a virus!

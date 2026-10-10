@@ -1,0 +1,6 @@
+request_id: 43716d2c-9dfe-41c7-85d4-3e35d872f43f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Compare agile and waterfall project management approaches.

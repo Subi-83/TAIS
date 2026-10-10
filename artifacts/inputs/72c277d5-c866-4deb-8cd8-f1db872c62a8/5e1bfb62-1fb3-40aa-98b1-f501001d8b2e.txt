@@ -1,0 +1,6 @@
+request_id: 5e1bfb62-1fb3-40aa-98b1-f501001d8b2e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 910
+
+Write a 10-day itinerary for traveling across South India, with daily schedules, travel tips and an approximate budget.

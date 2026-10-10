@@ -1,0 +1,6 @@
+request_id: fe37b8c4-66ef-4194-bb44-4aba7da6a0f1
+model: gemma4:12b
+priority: normal
+max_output_tokens: 8
+
+Reply with OK

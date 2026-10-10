@@ -1,0 +1,6 @@
+request_id: d4f5616f-90b2-41a2-9eb3-a720252f5533
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Explain in depth how a relational database executes a query, from parsing and optimization to indexes, joins and transaction handling.

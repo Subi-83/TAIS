@@ -1,0 +1,15 @@
+request_id: 50388117-881f-492f-9388-66f816d99d18
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 128
+ttft_ms: 5283.931750000193
+
+Depending on the context, there are several opposites for "ancient." Here are the most common ones:
+
+### 1. Most Common (General)
+*   **Modern:** This is the most direct antonym. It refers to the present or recent times.
+*   **New:** Used when referring to the age of a specific object or building.
+
+### 2. Context-Specific Opposites
+*   **Contemporary:** Used when referring to things happening *right now* or in the current era (e.g., "contemporary art" vs. "ancient art").
+*   **Recent:** Used when referring

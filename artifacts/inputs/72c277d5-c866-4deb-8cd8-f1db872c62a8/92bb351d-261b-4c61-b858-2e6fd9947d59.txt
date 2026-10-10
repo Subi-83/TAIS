@@ -1,0 +1,6 @@
+request_id: 92bb351d-261b-4c61-b858-2e6fd9947d59
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the difference between RAM and storage.

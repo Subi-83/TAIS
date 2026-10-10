@@ -1,0 +1,6 @@
+request_id: 5d6a7c4a-1e79-4092-bb43-418a3994e0f7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 700
+
+Describe the water cycle step by step.

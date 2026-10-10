@@ -1,0 +1,22 @@
+request_id: 128d9eb4-5fdc-4eae-8049-e1464761ac9d
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 250
+ttft_ms: 23650.454845999775
+
+To understand the difference between a process and a thread, it is helpful to think of them in terms of **ownership** and **execution**.
+
+In short: A **Process** is an instance of a running program (the container), and a **Thread** is a single path of execution within that process (the worker).
+
+---
+
+### 1. The Process (The Container)
+A process is an independent unit of execution. When you open an application (like a web browser or a music player), the operating system creates a process for it.
+
+*   **Memory Space:** Each process has its own private memory space (Address Space). One process cannot easily access the memory of another process.
+*   **Resources:** A process owns resources like file handles, environment variables, and memory.
+*   **Isolation:** Because processes are isolated, if one process crashes (e.g., your calculator app freezes), it usually does not crash other running programs.
+*   **Overhead:** Creating and switching between processes is "heavy" (expensive) because the OS must swap out the entire memory context.
+
+### 2. The Thread (The Worker)
+A thread is a subset of a process. A single process

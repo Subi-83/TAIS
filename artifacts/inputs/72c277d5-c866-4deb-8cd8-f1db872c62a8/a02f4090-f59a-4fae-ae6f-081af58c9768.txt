@@ -1,0 +1,6 @@
+request_id: a02f4090-f59a-4fae-ae6f-081af58c9768
+model: gemma4:12b
+priority: normal
+max_output_tokens: 260
+
+Explain how garbage collection works in major programming languages, comparing reference counting, mark-and-sweep and generational approaches.

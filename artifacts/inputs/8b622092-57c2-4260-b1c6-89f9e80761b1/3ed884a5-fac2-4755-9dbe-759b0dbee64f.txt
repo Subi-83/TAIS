@@ -1,0 +1,6 @@
+request_id: 3ed884a5-fac2-4755-9dbe-759b0dbee64f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Which gas do plants absorb from the air?

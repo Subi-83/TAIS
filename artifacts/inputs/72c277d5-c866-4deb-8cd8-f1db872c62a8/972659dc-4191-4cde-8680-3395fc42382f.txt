@@ -1,0 +1,6 @@
+request_id: 972659dc-4191-4cde-8680-3395fc42382f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 187
+
+List five tips for preparing for a technical interview and explain each briefly.

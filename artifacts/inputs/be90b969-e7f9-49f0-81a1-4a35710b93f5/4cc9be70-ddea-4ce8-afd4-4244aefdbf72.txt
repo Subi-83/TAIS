@@ -1,0 +1,6 @@
+request_id: 4cc9be70-ddea-4ce8-afd4-4244aefdbf72
+model: gemma4:12b
+priority: normal
+max_output_tokens: 110
+
+Summarize the plot of the movie 'Inception' in under 100 words.

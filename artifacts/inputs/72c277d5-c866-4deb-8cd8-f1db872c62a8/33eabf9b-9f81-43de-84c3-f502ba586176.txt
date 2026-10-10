@@ -1,0 +1,6 @@
+request_id: 33eabf9b-9f81-43de-84c3-f502ba586176
+model: gemma4:12b
+priority: normal
+max_output_tokens: 840
+
+Implement a thread-safe producer-consumer queue in Python using asyncio and explain how it avoids deadlocks and race conditions.

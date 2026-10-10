@@ -1,0 +1,6 @@
+request_id: bb3dbb80-241e-4215-8cdf-4a8afc715642
+model: gemma4:12b
+priority: normal
+max_output_tokens: 128
+
+Write a detailed recipe for making homemade chocolate chip cookies from scratch including ingredients and step-by-step instructions.

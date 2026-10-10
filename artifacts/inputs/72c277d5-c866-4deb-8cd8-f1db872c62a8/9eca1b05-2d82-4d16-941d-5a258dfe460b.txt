@@ -1,0 +1,6 @@
+request_id: 9eca1b05-2d82-4d16-941d-5a258dfe460b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe the role of a DNS server when you open a website.

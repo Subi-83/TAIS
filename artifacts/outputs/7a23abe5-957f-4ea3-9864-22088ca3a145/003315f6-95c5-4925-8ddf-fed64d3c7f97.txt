@@ -1,0 +1,7 @@
+request_id: 003315f6-95c5-4925-8ddf-fed64d3c7f97
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] stable_post_recovery request 2

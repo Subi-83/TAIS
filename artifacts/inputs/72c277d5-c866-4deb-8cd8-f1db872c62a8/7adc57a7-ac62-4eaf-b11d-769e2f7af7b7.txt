@@ -1,0 +1,6 @@
+request_id: 7adc57a7-ac62-4eaf-b11d-769e2f7af7b7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Write a SQL query to find the top 5 customers by total order value.

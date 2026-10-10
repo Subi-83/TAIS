@@ -1,0 +1,7 @@
+request_id: a4a2ced3-2b1c-4859-943f-b57f902c196e
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 28
+ttft_ms: 7049.314335999952
+
+The boiling point of water is **100 degrees Celsius (100°C)** at standard atmospheric pressure (sea level).

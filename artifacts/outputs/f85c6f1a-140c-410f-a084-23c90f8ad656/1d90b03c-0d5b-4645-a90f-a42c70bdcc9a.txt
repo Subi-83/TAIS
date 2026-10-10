@@ -1,0 +1,7 @@
+request_id: 1d90b03c-0d5b-4645-a90f-a42c70bdcc9a
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 30
+ttft_ms: 6649.603907999335
+
+The **Pacific Ocean** is the largest and deepest ocean on Earth. It covers more than 60 million square miles (155 million square

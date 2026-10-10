@@ -1,0 +1,10 @@
+request_id: b52ed865-d936-480c-8a10-6dcbe615b3d2
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 30
+ttft_ms: 23787.17918700022
+
+The scientist famous for the theory of relativity is **Albert Einstein**.
+
+He developed two distinct theories:
+1.  **Special Relativity (19

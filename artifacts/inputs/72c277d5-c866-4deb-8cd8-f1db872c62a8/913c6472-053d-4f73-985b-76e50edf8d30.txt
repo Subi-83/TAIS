@@ -1,0 +1,6 @@
+request_id: 913c6472-053d-4f73-985b-76e50edf8d30
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1225
+
+Compare monolithic, microservice and serverless architectures in depth, covering trade-offs, costs, team size and migration strategies.

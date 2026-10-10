@@ -1,0 +1,6 @@
+request_id: d7b55469-fc16-470d-8470-3eded504bc36
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+How many days are there in a leap year?

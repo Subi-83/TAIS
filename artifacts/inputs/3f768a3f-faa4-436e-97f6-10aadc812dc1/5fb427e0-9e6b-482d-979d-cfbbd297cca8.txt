@@ -1,0 +1,6 @@
+request_id: 5fb427e0-9e6b-482d-979d-cfbbd297cca8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 120
+
+Write a Python function that takes a list of integers and returns a new list containing only the even numbers.

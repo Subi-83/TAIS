@@ -1,0 +1,12 @@
+request_id: 25131b75-088e-4002-9dc1-f34db045e73b
+model: gemma4:12b
+input_tokens: 18
+output_tokens: 26
+ttft_ms: 28001.981198000067
+
+The four seasons are:
+
+1. Spring
+2. Summer
+3. Autumn (or Fall)
+4. Winter

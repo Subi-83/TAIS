@@ -1,0 +1,6 @@
+request_id: 1168597c-9557-40ad-828e-27f355f9e25e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 280
+
+Explain the difference between renewable and non-renewable energy with examples.

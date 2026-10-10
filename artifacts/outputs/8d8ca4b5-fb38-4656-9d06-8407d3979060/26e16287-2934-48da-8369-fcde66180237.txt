@@ -1,0 +1,7 @@
+request_id: 26e16287-2934-48da-8369-fcde66180237
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 11
+ttft_ms: 12603.433002999736
+
+The plural of "child" is **children**.

@@ -1,0 +1,8 @@
+request_id: eeea5f38-388e-46e5-981c-512720e6e8e9
+model: gemma4:12b
+priority: normal
+max_output_tokens: 52
+
+Explain the process of photosynthesis in simple terms
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

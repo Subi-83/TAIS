@@ -1,0 +1,6 @@
+request_id: 1a097310-dc47-4c7d-a242-9f8faddafbec
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1085
+
+Write a detailed business plan for a small cloud-kitchen startup, including market analysis, costs, marketing and risk assessment.

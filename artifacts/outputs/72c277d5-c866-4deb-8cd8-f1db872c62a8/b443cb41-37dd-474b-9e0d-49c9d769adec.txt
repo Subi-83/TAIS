@@ -1,0 +1,7 @@
+request_id: b443cb41-37dd-474b-9e0d-49c9d769adec
+model: gemma4:12b
+input_tokens: 20
+output_tokens: 10
+ttft_ms: 26259.007217000544
+
+The capital of India is **New Delhi**.

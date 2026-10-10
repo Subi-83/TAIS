@@ -9,6 +9,7 @@ const toUiConfig = (config) => ({
   token_aware_settings: {
     ...DEMO_SCHEDULER_CONFIG.token_aware_settings,
     max_waiting_time_sec: config.max_wait_seconds,
+    aging_factor: config.aging_weight,
   },
   max_queue: config.max_queue,
 });
@@ -49,6 +50,7 @@ export const schedulerService = {
         policy: payload.policy,
         max_wait_seconds: payload.token_aware_settings?.max_waiting_time_sec || 30,
         max_queue: payload.max_queue || 1000,
+        aging_weight: payload.token_aware_settings?.aging_factor ?? 1,
       });
       return toUiConfig(response.data);
     } catch (error) {

@@ -1,0 +1,6 @@
+request_id: 09311b00-ae08-4d02-afb6-5ad076d2c4a9
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the chemical symbol for gold?

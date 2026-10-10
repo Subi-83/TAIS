@@ -1,0 +1,6 @@
+request_id: acbf9bc3-060f-496a-96cf-6f0cd3cdcab4
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Explain the transformer architecture in detail, including self-attention, multi-head attention, positional encoding and how training works.

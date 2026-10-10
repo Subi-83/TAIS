@@ -1,0 +1,6 @@
+request_id: cd71d6c9-5b75-49d9-9096-d39ab12e4a85
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Create a 12-week study schedule to learn data structures and algorithms from scratch, with weekly topics, practice problems and review checkpoints.

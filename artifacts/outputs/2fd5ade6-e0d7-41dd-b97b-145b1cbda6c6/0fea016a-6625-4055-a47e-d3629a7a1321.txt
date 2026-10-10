@@ -1,0 +1,7 @@
+request_id: 0fea016a-6625-4055-a47e-d3629a7a1321
+model: gemma4:12b
+input_tokens: 40
+output_tokens: 110
+ttft_ms: 481.21466900011
+
+Engaging in daily exercise serves as a cornerstone for both physical and mental well-being, offering a wide array of systemic benefits. Physically, regular movement strengthens the cardiovascular system, improves muscular endurance, and aids in maintaining a healthy weight by boosting metabolism. Beyond the body, consistent activity acts as a powerful catalyst for mental clarity; it triggers the release of endorphins and dopamine, which effectively reduce stress, alleviate symptoms of anxiety, and enhance overall mood. By incorporating even moderate movement into a daily routine, individuals can improve their sleep quality, sharpen cognitive function

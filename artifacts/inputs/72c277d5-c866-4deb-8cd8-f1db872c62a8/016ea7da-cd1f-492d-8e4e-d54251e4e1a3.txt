@@ -1,0 +1,6 @@
+request_id: 016ea7da-cd1f-492d-8e4e-d54251e4e1a3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe how a bill becomes law in a parliamentary democracy.

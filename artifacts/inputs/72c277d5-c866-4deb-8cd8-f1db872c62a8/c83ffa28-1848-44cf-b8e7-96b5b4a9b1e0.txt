@@ -1,0 +1,6 @@
+request_id: c83ffa28-1848-44cf-b8e7-96b5b4a9b1e0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the smallest prime number?

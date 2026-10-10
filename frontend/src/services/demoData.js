@@ -111,6 +111,7 @@ export const DEMO_METRICS = {
   active_backend_instances: 4,
   current_throughput_rps: 48.6,
   p95_completion_latency_ms: 242.4,
+  avg_completion_latency_ms: 168.7,
   avg_time_to_first_token_ms: 38.2,
   current_backend_utilization_pct: 68.5,
   current_scheduler_policy: 'token_aware',

@@ -1,0 +1,6 @@
+request_id: 7cf2ab3e-0043-4f35-9627-57ecd5e67726
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the past tense of "run"?

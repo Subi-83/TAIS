@@ -1,0 +1,6 @@
+request_id: 1897e1eb-712b-4c6f-9ed3-dc73ff16978b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Explain what inflation is and how it affects savings.

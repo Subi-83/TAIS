@@ -1,0 +1,6 @@
+request_id: 1a22d139-ec39-44da-b8ff-e06848fc50d7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Explain how a hash table works.

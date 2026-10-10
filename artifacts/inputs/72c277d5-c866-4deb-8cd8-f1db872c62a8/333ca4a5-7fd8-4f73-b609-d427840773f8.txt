@@ -1,0 +1,6 @@
+request_id: 333ca4a5-7fd8-4f73-b609-d427840773f8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1050
+
+Write a complete Python command-line to-do list app with add, delete, list and save-to-file features, and explain the code.

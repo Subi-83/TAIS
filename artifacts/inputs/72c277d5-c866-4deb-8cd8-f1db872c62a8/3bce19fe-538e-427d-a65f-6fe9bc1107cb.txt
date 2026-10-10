@@ -1,0 +1,6 @@
+request_id: 3bce19fe-538e-427d-a65f-6fe9bc1107cb
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the capital city of Tamil Nadu?

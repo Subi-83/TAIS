@@ -1,0 +1,8 @@
+request_id: 6901a25c-2d95-4746-b512-73812f26ffdb
+model: gemma4:12b
+priority: normal
+max_output_tokens: 95
+
+Write a professional email asking for a meeting next Tuesday.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

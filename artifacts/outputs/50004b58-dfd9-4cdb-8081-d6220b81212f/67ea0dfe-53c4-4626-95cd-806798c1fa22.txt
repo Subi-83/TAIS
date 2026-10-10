@@ -1,0 +1,7 @@
+request_id: 67ea0dfe-53c4-4626-95cd-806798c1fa22
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] fault_peak request 2

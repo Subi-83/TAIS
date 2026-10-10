@@ -1,0 +1,6 @@
+request_id: 3c786576-9f72-475c-a4ca-50ce0a3a388c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1015
+
+Write a detailed essay on the impact of artificial intelligence on employment over the next decade, with examples, counterarguments and a conclusion.

@@ -1,0 +1,6 @@
+request_id: d35e17aa-6ce0-4bb0-b45a-42b270bd26b3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1040
+
+Write a short story of about 800 words about a robot that learns to paint.

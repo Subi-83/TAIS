@@ -1,0 +1,6 @@
+request_id: 6ac89bfe-367a-4c80-81cc-acfc7af20347
+model: gemma4:12b
+priority: normal
+max_output_tokens: 20
+
+What is 2 plus 2?

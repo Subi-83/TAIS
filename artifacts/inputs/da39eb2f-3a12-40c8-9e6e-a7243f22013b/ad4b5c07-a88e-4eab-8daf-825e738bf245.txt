@@ -1,0 +1,8 @@
+request_id: ad4b5c07-a88e-4eab-8daf-825e738bf245
+model: gemma4:12b
+priority: normal
+max_output_tokens: 850
+
+Create a comprehensive 7-day meal plan for a vegan athlete, including a shopping list.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

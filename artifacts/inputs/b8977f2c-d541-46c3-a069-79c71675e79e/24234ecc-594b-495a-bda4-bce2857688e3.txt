@@ -1,0 +1,8 @@
+request_id: 24234ecc-594b-495a-bda4-bce2857688e3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 650
+
+Explain the concept of blockchain technology in great detail for a non-technical audience.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

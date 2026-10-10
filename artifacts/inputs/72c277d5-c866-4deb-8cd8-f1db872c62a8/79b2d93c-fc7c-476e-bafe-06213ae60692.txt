@@ -1,0 +1,6 @@
+request_id: 79b2d93c-fc7c-476e-bafe-06213ae60692
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1120
+
+Write a detailed technical report on how chaos engineering improves system reliability, including methodology, example experiments and metrics.

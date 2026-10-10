@@ -1,0 +1,6 @@
+request_id: dbd8e7c6-fbec-4577-98fe-953cf4a46dd3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 280
+
+Explain the difference between supervised and unsupervised learning with an example of each.

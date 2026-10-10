@@ -1,0 +1,6 @@
+request_id: e462866d-a6ef-4831-8284-ebc430970c16
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is 15% of 200?

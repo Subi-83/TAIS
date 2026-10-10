@@ -1,0 +1,6 @@
+request_id: 128d9eb4-5fdc-4eae-8049-e1464761ac9d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain the difference between a process and a thread.

@@ -1,0 +1,6 @@
+request_id: 79b75ca3-930a-4934-9886-5e9a2a7ffca4
+model: gemma4:12b
+priority: normal
+max_output_tokens: 128
+
+What is the capital of France?

@@ -1,0 +1,6 @@
+request_id: 673bf4d1-ceda-423a-8266-00e2580a0e3f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 24
+
+w3 w3 w3 w3 w3 w3 w3

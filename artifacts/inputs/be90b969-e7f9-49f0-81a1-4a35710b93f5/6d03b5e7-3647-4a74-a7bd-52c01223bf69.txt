@@ -1,0 +1,6 @@
+request_id: 6d03b5e7-3647-4a74-a7bd-52c01223bf69
+model: gemma4:12b
+priority: normal
+max_output_tokens: 240
+
+Explain the concept of 'sunk cost fallacy' with a real-world example.

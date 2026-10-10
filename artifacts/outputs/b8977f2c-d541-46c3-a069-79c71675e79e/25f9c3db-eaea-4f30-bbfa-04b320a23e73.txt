@@ -1,0 +1,14 @@
+request_id: 25f9c3db-eaea-4f30-bbfa-04b320a23e73
+model: gemma4:12b
+input_tokens: 49
+output_tokens: 850
+ttft_ms: 139713.31494599872
+
+The impact of social media on modern communication and human relationships is not merely a change in *how* we talk, but a fundamental restructuring of the *architecture of human connection*. It has shifted the paradigm from organic, context-rich interactions to mediated, curated, and algorithmically filtered experiences.
+
+The following analysis explores this impact through three primary lenses: the structural changes in communication, the paradoxes of modern intimacy, and the psychological shifts in self-perception.
+
+---
+
+### 1. Structural Changes in Communication: From Context to Compression
+Social media has fundamentally altered the "mechanics" of human interaction,

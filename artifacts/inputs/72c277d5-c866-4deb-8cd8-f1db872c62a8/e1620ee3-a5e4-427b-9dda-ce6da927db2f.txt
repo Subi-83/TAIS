@@ -1,0 +1,6 @@
+request_id: e1620ee3-a5e4-427b-9dda-ce6da927db2f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 300
+
+Describe how CI/CD pipelines work and write an example pipeline configuration for testing and deploying a Python application.

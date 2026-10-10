@@ -1,0 +1,7 @@
+request_id: d74df874-ad46-4cc2-a588-2d3dd2758164
+model: gemma4:12b
+input_tokens: 40
+output_tokens: 800
+ttft_ms: 75738.53607400088
+
+For a first-time solo traveler focused on art and history, Paris is a

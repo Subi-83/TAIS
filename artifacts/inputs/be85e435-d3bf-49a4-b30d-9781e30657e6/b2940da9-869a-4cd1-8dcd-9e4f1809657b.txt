@@ -1,0 +1,6 @@
+request_id: b2940da9-869a-4cd1-8dcd-9e4f1809657b
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Which planet is known as the Red Planet?

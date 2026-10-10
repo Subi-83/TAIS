@@ -1,0 +1,6 @@
+request_id: b8cfc0c5-7856-44fd-8bd8-2e99c42dd3f0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 50
+
+Give me a quick tip for staying focused during a long study session.

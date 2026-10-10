@@ -1,0 +1,7 @@
+request_id: 4d199054-33e3-4f81-8da7-90639c9f6b5b
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 13
+ttft_ms: 24475.39774299912
+
+There are **26** letters in the English alphabet.

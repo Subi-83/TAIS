@@ -1,0 +1,13 @@
+request_id: 6af9b2a2-4081-4bb1-8a3b-07f294d1d8ff
+model: gemma4:12b
+input_tokens: 48
+output_tokens: 750
+ttft_ms: 61925.93318000036
+
+Starting a backyard vegetable garden is one of the most rewarding ways to connect with nature, improve your health, and enjoy the literal fruits (and vegetables) of your labor. However, the transition from "interested observer" to "successful grower" requires a bit of strategy.
+
+This guide breaks the process down into five distinct phases to take you from a patch of grass to a bountiful harvest.
+
+---
+
+### Phase 1: The Planning Phase (The "Think Before You Dig

@@ -1,0 +1,9 @@
+request_id: 49339f58-b1a7-49af-83a4-de6da6fdcad1
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 30
+ttft_ms: 5939.752231000057
+
+The number of continents depends on the model used, but the most commonly taught answer is **7**.
+
+Here are the different ways they are categorized:

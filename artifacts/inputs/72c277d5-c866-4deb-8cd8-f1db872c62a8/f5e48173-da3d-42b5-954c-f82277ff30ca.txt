@@ -1,0 +1,6 @@
+request_id: f5e48173-da3d-42b5-954c-f82277ff30ca
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is 7 squared?

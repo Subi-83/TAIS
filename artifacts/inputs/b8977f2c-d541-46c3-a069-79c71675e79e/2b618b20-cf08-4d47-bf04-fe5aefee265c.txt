@@ -1,0 +1,8 @@
+request_id: 2b618b20-cf08-4d47-bf04-fe5aefee265c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 25
+
+What is the capital of France and what is its current population?
+
+Benchmark variation 2: give a distinct answer while preserving the requested scope.

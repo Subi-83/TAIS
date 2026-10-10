@@ -1,0 +1,6 @@
+request_id: 05398a3c-fafc-4be7-814c-f519e9722f76
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain what Git branching is and why teams use it.

@@ -1,0 +1,6 @@
+request_id: 62ab65c7-2fb7-4b69-b347-4f67ec830842
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+How many minutes are in two hours?

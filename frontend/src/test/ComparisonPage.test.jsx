@@ -24,8 +24,9 @@ describe('ComparisonPage (JavaScript)', () => {
     await waitFor(() => {
       expect(screen.getByText('Performance Benchmark Comparison')).toBeInTheDocument();
     });
-    expect(screen.getByText(/p95 latency reduction/i)).toBeInTheDocument();
-    expect(screen.getByText(/avg ttft speedup/i)).toBeInTheDocument();
-    expect(screen.getByText(/throughput gain/i)).toBeInTheDocument();
+    expect(screen.getByText(/p95 latency change/i)).toBeInTheDocument();
+    expect(screen.getByText(/average latency change/i)).toBeInTheDocument();
+    expect(screen.getByText(/avg ttft change/i)).toBeInTheDocument();
+    expect(screen.getByText(/throughput change/i)).toBeInTheDocument();
   });
 });

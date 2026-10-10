@@ -1,0 +1,6 @@
+request_id: a0b0c157-5c33-4fc2-9400-cb63d7a4d089
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1120
+
+Write a detailed step-by-step tutorial on building a REST API with FastAPI, including authentication, database models and testing.

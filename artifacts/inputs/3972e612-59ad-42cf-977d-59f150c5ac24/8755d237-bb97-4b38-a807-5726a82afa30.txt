@@ -1,0 +1,8 @@
+request_id: 8755d237-bb97-4b38-a807-5726a82afa30
+model: gemma4:12b
+priority: normal
+max_output_tokens: 38
+
+How do I boil an egg?
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

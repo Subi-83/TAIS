@@ -1,0 +1,7 @@
+request_id: 3d805686-7068-4b6e-9c29-553312ef4e6e
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 13
+ttft_ms: 18087.34992800055
+
+The file extension for a Python script is **.py**

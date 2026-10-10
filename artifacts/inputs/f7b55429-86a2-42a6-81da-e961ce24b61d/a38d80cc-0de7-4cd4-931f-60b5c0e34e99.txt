@@ -1,0 +1,6 @@
+request_id: a38d80cc-0de7-4cd4-931f-60b5c0e34e99
+model: gemma4:12b
+priority: normal
+max_output_tokens: 128
+
+Translate "good morning" into Spanish.

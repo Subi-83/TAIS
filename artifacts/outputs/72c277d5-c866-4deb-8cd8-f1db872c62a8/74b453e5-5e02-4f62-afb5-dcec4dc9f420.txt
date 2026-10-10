@@ -1,0 +1,7 @@
+request_id: 74b453e5-5e02-4f62-afb5-dcec4dc9f420
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 10
+ttft_ms: 16954.429021001488
+
+The first month of the year is January.

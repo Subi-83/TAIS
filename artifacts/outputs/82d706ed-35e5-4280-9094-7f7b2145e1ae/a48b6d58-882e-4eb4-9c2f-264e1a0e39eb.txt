@@ -1,0 +1,7 @@
+request_id: a48b6d58-882e-4eb4-9c2f-264e1a0e39eb
+model: gemma4:12b
+input_tokens: 36
+output_tokens: 2
+ttft_ms: 441.36997699934
+
+Hola

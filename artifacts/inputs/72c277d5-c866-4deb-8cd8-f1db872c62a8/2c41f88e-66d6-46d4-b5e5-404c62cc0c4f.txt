@@ -1,0 +1,6 @@
+request_id: 2c41f88e-66d6-46d4-b5e5-404c62cc0c4f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe how vaccines train the immune system.

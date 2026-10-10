@@ -1,0 +1,6 @@
+request_id: aedbc21c-b684-443f-a653-3c43a5d7957c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+How many sides does a hexagon have?

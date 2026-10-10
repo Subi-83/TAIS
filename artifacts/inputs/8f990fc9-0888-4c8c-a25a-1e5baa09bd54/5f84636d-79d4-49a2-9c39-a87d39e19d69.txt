@@ -1,0 +1,6 @@
+request_id: 5f84636d-79d4-49a2-9c39-a87d39e19d69
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the opposite of "ancient"?

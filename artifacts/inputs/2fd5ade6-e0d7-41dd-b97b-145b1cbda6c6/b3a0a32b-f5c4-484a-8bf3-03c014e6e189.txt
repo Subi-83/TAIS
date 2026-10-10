@@ -1,0 +1,8 @@
+request_id: b3a0a32b-f5c4-484a-8bf3-03c014e6e189
+model: gemma4:12b
+priority: normal
+max_output_tokens: 550
+
+Write a detailed 500-word short story about a time traveler who gets stuck in the Victorian era.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

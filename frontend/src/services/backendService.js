@@ -2,6 +2,15 @@ import { apiClient, handleAxiosError } from './apiClient';
 import { DEMO_BACKENDS } from './demoData';
 
 export const backendService = {
+  async submitBulkChats(requests) {
+    try {
+      const response = await apiClient.post('/api/requests/bulk', { requests });
+      return response.data;
+    } catch (error) {
+      throw handleAxiosError(error);
+    }
+  },
+
   async getBackends(useDemo = false) {
     if (useDemo) {
       return [...DEMO_BACKENDS];
@@ -13,7 +22,7 @@ export const backendService = {
         id: backend.backend_id,
         name: backend.backend_id,
         endpoint: backend.base_url,
-        status: 'healthy',
+        status: backend.status || 'unknown',
       }));
     } catch (error) {
       throw handleAxiosError(error);

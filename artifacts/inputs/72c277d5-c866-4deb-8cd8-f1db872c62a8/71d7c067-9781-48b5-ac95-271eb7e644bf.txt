@@ -1,0 +1,6 @@
+request_id: 71d7c067-9781-48b5-ac95-271eb7e644bf
+model: gemma4:12b
+priority: normal
+max_output_tokens: 910
+
+Explain the history and evolution of the internet from ARPANET to today, highlighting major technologies and turning points.

@@ -1,0 +1,7 @@
+request_id: e9c4a53a-a958-4b40-b4f5-756a7d89a3e5
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 10
+ttft_ms: 4016.869848001079
+
+The chemical symbol for gold is **Au**.

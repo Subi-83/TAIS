@@ -1,0 +1,8 @@
+request_id: f9306c8d-69e7-452d-8faa-eb67b9f185d5
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the capital of France and what is its most famous landmark?
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

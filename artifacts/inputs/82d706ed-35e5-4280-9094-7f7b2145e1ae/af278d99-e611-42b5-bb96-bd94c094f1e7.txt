@@ -1,0 +1,8 @@
+request_id: af278d99-e611-42b5-bb96-bd94c094f1e7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 420
+
+Explain the concept of quantum entanglement and its implications for future computing.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

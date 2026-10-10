@@ -1,0 +1,7 @@
+request_id: 4790d1f3-7726-4b38-96c5-bef0afe752ae
+model: gemma4:12b
+input_tokens: 24
+output_tokens: 9
+ttft_ms: 7550.478445000408
+
+Mixing blue and yellow creates **green**.

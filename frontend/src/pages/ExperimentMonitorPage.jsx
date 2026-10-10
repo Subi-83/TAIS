@@ -26,9 +26,10 @@ export const ExperimentMonitorPage = () => {
   const navigate = useNavigate();
   const { useDemoMode, activeExperimentId, setActiveExperimentId, streamBufferSize } = useBackendStatus();
 
-  const experimentIdParam = searchParams.get('id') || activeExperimentId || 'exp-d07-9481';
+  const experimentIdParam = searchParams.get('id') || activeExperimentId;
 
   const [experiment, setExperiment] = useState(null);
+  const [pairedExperiment, setPairedExperiment] = useState(null);
   const [requests, setRequests] = useState([]);
   const [timelineEvents, setTimelineEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +39,7 @@ export const ExperimentMonitorPage = () => {
   const [searchFilter, setSearchFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [isStreaming, setIsStreaming] = useState(true);
+  const [lastRefreshed, setLastRefreshed] = useState(null);
 
   const loadExperiment = useCallback(async () => {
     if (!experimentIdParam) {
@@ -49,8 +51,16 @@ export const ExperimentMonitorPage = () => {
     try {
       const data = await experimentService.getExperiment(experimentIdParam, useDemoMode);
       setExperiment(data);
+      if (data.paired_experiment_id) {
+        try {
+          setPairedExperiment(await experimentService.getExperiment(data.paired_experiment_id, useDemoMode));
+        } catch {
+          setPairedExperiment(null);
+        }
+      }
       if (data.recent_requests) setRequests(data.recent_requests);
       if (data.recent_events) setTimelineEvents(data.recent_events);
+      setLastRefreshed(new Date());
     } catch (err) {
       setError(err?.message || 'Failed to load experiment status');
     } finally {
@@ -62,21 +72,38 @@ export const ExperimentMonitorPage = () => {
     loadExperiment();
   }, [loadExperiment]);
 
+  // Keep aggregate cards synchronized with the gateway while SSE updates rows.
+  useEffect(() => {
+    if (!experimentIdParam || useDemoMode) return;
+    const interval = setInterval(async () => {
+      try {
+        const data = await experimentService.getExperiment(experimentIdParam, false);
+        setExperiment(data);
+        if (data.paired_experiment_id) {
+          setPairedExperiment(await experimentService.getExperiment(data.paired_experiment_id, false));
+        }
+      } catch {
+        // The normal page-level error flow handles persistent connection errors.
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [experimentIdParam, useDemoMode]);
+
   // Subscribe to SSE stream
   useEffect(() => {
-    if (!experimentIdParam || !isStreaming) return;
+    if (!experimentIdParam || !isStreaming || (experiment && ['completed', 'failed', 'cancelled'].includes(experiment.status))) return;
 
     const cleanup = experimentService.subscribeToEvents(
       experimentIdParam,
       (newEvent) => {
-        setTimelineEvents((prev) => [newEvent, ...prev.slice(0, streamBufferSize - 1)]);
+        setTimelineEvents((prev) => prev.some((event) => event.id === newEvent.id) ? prev : [newEvent, ...prev.slice(0, streamBufferSize - 1)]);
       },
       (updatedRequest) => {
         setRequests((prev) => {
           const index = prev.findIndex((r) => r.request_id === updatedRequest.request_id);
           if (index >= 0) {
             const copy = [...prev];
-            copy[index] = updatedRequest;
+            copy[index] = { ...copy[index], ...updatedRequest };
             return copy;
           }
           return [updatedRequest, ...prev.slice(0, streamBufferSize - 1)];
@@ -89,7 +116,7 @@ export const ExperimentMonitorPage = () => {
     );
 
     return () => cleanup();
-  }, [experimentIdParam, isStreaming, useDemoMode, streamBufferSize]);
+  }, [experimentIdParam, isStreaming, useDemoMode, streamBufferSize, experiment?.status]);
 
   const handleConfirmCancel = async () => {
     if (!experiment) return;
@@ -149,6 +176,13 @@ export const ExperimentMonitorPage = () => {
     return `${mins}m ${s < 10 ? '0' : ''}${s}s`;
   };
 
+  const fifoExperiment = experiment.pair_role === 'fifo' ? experiment : pairedExperiment;
+  const d07Experiment = experiment.pair_role === 'token_aware' ? experiment : pairedExperiment;
+  const pairCards = [
+    { label: 'FIFO Baseline', item: fifoExperiment, color: 'gray' },
+    { label: 'D07 Token-Aware', item: d07Experiment, color: 'blue' },
+  ];
+
   return (
     <div className="space-y-6">
       {/* Header Card */}
@@ -177,6 +211,22 @@ export const ExperimentMonitorPage = () => {
           </div>
 
           <div className="flex items-center gap-2">
+            {experiment.paired_experiment_id && (
+              <>
+                <button
+                  onClick={() => navigate(`/monitor?id=${experiment.paired_experiment_id}`)}
+                  className="rounded border border-blue-300 bg-blue-50 px-2.5 py-1.5 text-xs font-medium text-blue-700"
+                >
+                  View {experiment.pair_role === 'fifo' ? 'D07' : 'FIFO'}
+                </button>
+                <button
+                  onClick={() => navigate(`/comparison?fifo=${experiment.pair_role === 'fifo' ? experiment.experiment_id : experiment.paired_experiment_id}&token=${experiment.pair_role === 'token_aware' ? experiment.experiment_id : experiment.paired_experiment_id}`)}
+                  className="rounded bg-blue-600 px-2.5 py-1.5 text-xs font-medium text-white"
+                >
+                  Compare Results
+                </button>
+              </>
+            )}
             <button
               onClick={() => setIsStreaming(!isStreaming)}
               className={`flex items-center gap-1.5 rounded border px-2.5 py-1.5 text-xs font-medium ${
@@ -190,13 +240,14 @@ export const ExperimentMonitorPage = () => {
             </button>
 
             <button
-              onClick={loadExperiment}
+              onClick={() => loadExperiment()}
               disabled={isLoading}
               className="flex items-center gap-1.5 rounded border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 px-2.5 py-1.5 text-xs text-gray-700 dark:text-slate-300"
             >
               <RefreshCw className={`h-3 w-3 ${isLoading ? 'animate-spin' : ''}`} />
-              <span>Refresh</span>
+              <span>{isLoading ? 'Refreshing…' : 'Refresh'}</span>
             </button>
+            {lastRefreshed && <span className="text-[10px] text-gray-400">{lastRefreshed.toLocaleTimeString()}</span>}
 
             {experiment.status === 'running' && (
               <button
@@ -210,6 +261,36 @@ export const ExperimentMonitorPage = () => {
           </div>
         </div>
       </div>
+
+      {experiment.paired_experiment_id && (
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {pairCards.map(({ label, item, color }) => (
+            <button
+              key={label}
+              type="button"
+              disabled={!item}
+              onClick={() => item && navigate(`/monitor?id=${item.experiment_id}`)}
+              className={`rounded-lg border p-4 text-left shadow-2xs transition hover:-translate-y-0.5 ${color === 'blue' ? 'border-blue-300 bg-blue-50/60 dark:border-blue-900 dark:bg-blue-950/20' : 'border-gray-300 bg-white dark:border-slate-700 dark:bg-slate-900'}`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">{label}</div>
+                  <div className="mt-0.5 max-w-[420px] truncate font-mono text-[10px] text-gray-500">{item?.experiment_id || 'Preparing paired run…'}</div>
+                </div>
+                {item && <StatusBadge status={item.status} size="sm" />}
+              </div>
+              <div className="mt-4 grid grid-cols-3 gap-3 text-xs sm:grid-cols-6">
+                <div><div className="text-gray-500">Submitted</div><div className="mt-1 font-mono font-bold">{item?.total_requests ?? '—'}</div></div>
+                <div><div className="text-gray-500">Queued</div><div className="mt-1 font-mono font-bold">{item?.queued_requests ?? '—'}</div></div>
+                <div><div className="text-gray-500">Completed</div><div className="mt-1 font-mono font-bold">{item?.completed_requests ?? '—'}</div></div>
+                <div><div className="text-gray-500">Avg Latency</div><div className="mt-1 font-mono font-bold">{item ? `${Number(item.current_avg_latency_ms || 0).toFixed(0)}ms` : '—'}</div></div>
+                <div><div className="text-gray-500">Avg TTFT</div><div className="mt-1 font-mono font-bold">{item ? `${Number(item.avg_ttft_ms || 0).toFixed(0)}ms` : '—'}</div></div>
+                <div><div className="text-gray-500">Throughput</div><div className="mt-1 font-mono font-bold">{item ? `${Number(item.current_throughput_rps || 0).toFixed(2)}/s` : '—'}</div></div>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* KPI Row */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
@@ -234,22 +315,22 @@ export const ExperimentMonitorPage = () => {
         />
         <MetricCard
           title="Throughput"
-          value={experiment.current_throughput_rps.toFixed(1)}
+          value={Number(experiment.current_throughput_rps || 0).toFixed(1)}
           unit="req/s"
           icon={<Activity className="h-4 w-4 text-teal-600" />}
         />
         <MetricCard
-          title="p95 Latency"
-          value={experiment.current_p95_latency_ms.toFixed(0)}
+          title="Average Latency"
+          value={Number(experiment.current_avg_latency_ms || 0).toFixed(0)}
           unit="ms"
-          subtext={`TTFT: ${experiment.avg_ttft_ms.toFixed(1)}ms`}
+          subtext={`Avg TTFT: ${Number(experiment.avg_ttft_ms || 0).toFixed(1)}ms`}
           icon={<Clock className="h-4 w-4 text-amber-500" />}
         />
         <MetricCard
           title="Active Workers"
           value={experiment.active_backends}
           unit="replicas"
-          subtext={`Util: ${experiment.avg_backend_utilization_pct.toFixed(0)}%`}
+          subtext={`Util: ${Number(experiment.avg_backend_utilization_pct || 0).toFixed(0)}%`}
           icon={<Server className="h-4 w-4 text-purple-600" />}
         />
       </div>
@@ -294,6 +375,7 @@ export const ExperimentMonitorPage = () => {
                 <tr>
                   <th className="py-2.5 px-3">Request ID</th>
                   <th className="py-2.5 px-2.5">Tokens (In/Out)</th>
+                  <th className="py-2.5 px-2.5">Cost / Score</th>
                   <th className="py-2.5 px-2.5">Priority</th>
                   <th className="py-2.5 px-2.5">Status</th>
                   <th className="py-2.5 px-2.5">Backend</th>
@@ -304,7 +386,7 @@ export const ExperimentMonitorPage = () => {
               <tbody className="divide-y divide-gray-100 dark:divide-slate-800/80 font-mono text-xs">
                 {filteredRequests.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-6 text-center text-gray-400 text-xs">
+                    <td colSpan={8} className="py-6 text-center text-gray-400 text-xs">
                       No matching requests in current buffer.
                     </td>
                   </tr>
@@ -312,10 +394,21 @@ export const ExperimentMonitorPage = () => {
                   filteredRequests.map((req) => (
                     <tr key={req.request_id} className="hover:bg-gray-50/80 dark:hover:bg-slate-800/40">
                       <td className="py-2.5 px-3 font-semibold text-gray-900 dark:text-white">
-                        {req.request_id}
+                        <div>{req.request_id}</div>
+                        <div className="mt-1 max-w-[220px] truncate text-[10px] font-normal text-gray-400" title={req.prompt_preview}>
+                          {req.request_kind || 'request'}: {req.prompt_preview || 'payload pending'}
+                        </div>
+                        {req.output_preview && (
+                          <div className="mt-1 max-w-[220px] truncate text-[10px] font-normal text-emerald-600" title={req.output_preview}>
+                            output: {req.output_preview}
+                          </div>
+                        )}
                       </td>
                       <td className="py-2.5 px-2.5 text-gray-600 dark:text-slate-300">
-                        {req.input_tokens}/{req.output_tokens}
+                        {req.input_tokens ?? '—'}/{req.output_tokens ?? req.estimated_output_tokens ?? '—'}
+                      </td>
+                      <td className="py-2.5 px-2.5 text-gray-600 dark:text-slate-300">
+                        {req.estimated_cost ?? '—'} / {req.scheduling_score !== undefined ? Number(req.scheduling_score).toFixed(1) : '—'}
                       </td>
                       <td className="py-2.5 px-2.5">
                         <StatusBadge status={req.priority} size="sm" showDot={false} />
@@ -323,8 +416,8 @@ export const ExperimentMonitorPage = () => {
                       <td className="py-2.5 px-2.5">
                         <StatusBadge status={req.status} size="sm" />
                       </td>
-                      <td className="py-2.5 px-2.5 text-gray-500 truncate max-w-[100px]">
-                        {req.assigned_backend || '—'}
+                      <td className="py-2.5 px-2.5 text-gray-500" title={req.assigned_backend || ''}>
+                        <span className="block max-w-52 break-all">{req.assigned_backend || '—'}</span>
                       </td>
                       <td className="py-2.5 px-2.5 text-gray-600 dark:text-slate-300">
                         {req.ttft_ms !== undefined ? `${req.ttft_ms}ms` : '—'}
@@ -358,11 +451,11 @@ export const ExperimentMonitorPage = () => {
               timelineEvents.map((evt) => (
                 <div key={evt.id} className="border-l-2 border-gray-200 dark:border-slate-800 pl-3 pb-1">
                   <div className="flex items-center justify-between text-[10px] text-gray-400 font-mono mb-0.5">
-                    <span>+{evt.relative_time_sec}s</span>
-                    <span className="uppercase font-semibold">{evt.event_type.replace('_', ' ')}</span>
+                    <span>+{evt.relative_time_sec ?? 0}s</span>
+                    <span className="uppercase font-semibold">{String(evt.event_type || 'event').replaceAll('_', ' ')}</span>
                   </div>
                   <p className="text-gray-700 dark:text-slate-300 text-xs leading-snug">
-                    {evt.message}
+                    {evt.message || 'Event received'}
                   </p>
                 </div>
               ))

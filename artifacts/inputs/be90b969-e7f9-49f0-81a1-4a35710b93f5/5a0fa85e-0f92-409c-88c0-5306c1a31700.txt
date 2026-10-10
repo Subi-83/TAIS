@@ -1,0 +1,6 @@
+request_id: 5a0fa85e-0f92-409c-88c0-5306c1a31700
+model: gemma4:12b
+priority: normal
+max_output_tokens: 450
+
+What are the pros and cons of remote work for a software engineering team?

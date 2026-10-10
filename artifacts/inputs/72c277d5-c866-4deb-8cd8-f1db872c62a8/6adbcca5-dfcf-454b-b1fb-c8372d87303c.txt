@@ -1,0 +1,6 @@
+request_id: 6adbcca5-dfcf-454b-b1fb-c8372d87303c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 133
+
+Explain how HTTPS keeps data secure in simple terms.

@@ -1,0 +1,8 @@
+request_id: 75d691c6-d963-47e1-8228-cb230a25d91a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 232
+
+Compare and contrast the different types of renewable energy sources
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

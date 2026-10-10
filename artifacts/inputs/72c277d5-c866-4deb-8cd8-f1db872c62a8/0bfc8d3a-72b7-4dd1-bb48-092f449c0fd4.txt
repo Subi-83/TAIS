@@ -1,0 +1,6 @@
+request_id: 0bfc8d3a-72b7-4dd1-bb48-092f449c0fd4
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Write a Python function that checks whether a string is a palindrome.

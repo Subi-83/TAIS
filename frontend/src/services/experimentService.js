@@ -4,18 +4,79 @@ import { DEMO_EXPERIMENT, DEMO_EXPERIMENT_HISTORY } from './demoData';
 let localDemoExperiment = { ...DEMO_EXPERIMENT };
 let localHistory = [...DEMO_EXPERIMENT_HISTORY];
 
-const toUiExperiment = (item) => ({
+const queueWaitMetrics = (requests = []) => {
+  const waits = requests
+    .map((request) => Number(request.queue_wait_ms))
+    .filter((wait) => Number.isFinite(wait));
+  const total = waits.length;
+  const percentage = (matches) => (total ? (matches * 100) / total : 0);
+  const distribution = {
+    under_50: percentage(waits.filter((wait) => wait < 50).length),
+    '50_to_150': percentage(waits.filter((wait) => wait >= 50 && wait < 150).length),
+    '150_to_threshold': percentage(waits.filter((wait) => wait >= 150 && wait <= 300).length),
+    over_threshold: percentage(waits.filter((wait) => wait > 300).length),
+  };
+  return { distribution, starvationRate: distribution.over_threshold, samples: total };
+};
+
+const toUiExperiment = (item) => {
+  const measuredWaits = queueWaitMetrics(item.recent_requests);
+  const distribution = Object.keys(item.queue_wait_distribution_pct || {}).length
+    ? item.queue_wait_distribution_pct
+    : measuredWaits.distribution;
+  const starvationRate = Number.isFinite(Number(item.starvation_rate_pct))
+    ? Number(item.starvation_rate_pct)
+    : measuredWaits.starvationRate;
+
+  return ({
   ...item,
   policy: item.scheduler_policy || item.policy,
   total_requests: item.request_count ?? item.total_requests ?? 0,
   completed_requests: item.completed_requests ?? 0,
   failed_requests: item.failed_requests ?? 0,
+  elapsed_seconds: item.elapsed_seconds ?? 0,
+  queued_requests: item.queued_requests ?? 0,
+  cancelled_requests: item.cancelled_requests ?? 0,
+  active_backends: item.active_backends ?? 1,
   current_p95_latency_ms: item.current_p95_latency_ms ?? 0,
+  current_avg_latency_ms: item.current_avg_latency_ms ?? item.current_p95_latency_ms ?? 0,
+  median_latency_ms: item.median_latency_ms ?? 0,
+  p99_latency_ms: item.p99_latency_ms ?? 0,
   avg_ttft_ms: item.avg_ttft_ms ?? 0,
   current_throughput_rps: item.current_throughput_rps ?? 0,
-});
+  tokens_per_second: item.tokens_per_second ?? 0,
+  starvation_rate_pct: starvationRate,
+  starvation_threshold_ms: item.starvation_threshold_ms ?? 2000,
+  average_queue_wait_ms: item.average_queue_wait_ms ?? null,
+  p95_queue_wait_ms: item.p95_queue_wait_ms ?? null,
+  max_queue_wait_ms: item.max_queue_wait_ms ?? null,
+  over_300ms_rate_pct: item.over_300ms_rate_pct ?? null,
+  overdue_waiting: item.overdue_waiting ?? 0,
+  overdue_dispatched: item.overdue_dispatched ?? 0,
+  max_bypass: item.max_bypass ?? 0,
+  fairness_starvation_rate_pct: item.fairness_starvation_rate_pct ?? null,
+  jain_fairness_on_slowdown: item.jain_fairness_on_slowdown ?? null,
+  queue_wait_distribution_pct: distribution,
+  prediction_error: item.prediction_error ?? null,
+  avg_prediction_latency_ms: item.avg_prediction_latency_ms ?? 0,
+  avg_inference_latency_ms: item.avg_inference_latency_ms ?? 0,
+  metric_samples: item.metric_samples ?? item.completed_requests ?? 0,
+  queue_wait_samples: measuredWaits.samples,
+  avg_backend_utilization_pct: item.avg_backend_utilization_pct ?? 0,
+  config: item.config ?? {},
+  });
+};
 
 export const experimentService = {
+  async getFaultRecoveryLatest(useDemo = false) {
+    if (useDemo) return { run_id: null, observations: [] };
+    try {
+      const response = await apiClient.get('/api/fault-recovery/latest');
+      return response.data;
+    } catch (error) {
+      throw handleAxiosError(error);
+    }
+  },
   async getExperimentsList(useDemo = false) {
     if (useDemo) {
       return [...localHistory];
@@ -85,16 +146,22 @@ export const experimentService = {
       const profile = ['short_interactive', 'mixed', 'long_context', 'high_output', 'burst', 'sustained'].includes(config.profile)
         ? config.profile
         : 'mixed';
-      const created = await apiClient.post('/api/experiments', {
+      const paired = await apiClient.post('/api/experiments/paired', {
         name: config.name || `${profile} workload`,
-        scheduler_policy: config.scheduling_policy || 'token_aware',
         workload_profile: profile,
         request_count: config.request_count,
-        model: config.model_id || 'mock-echo-1',
-        random_seed: config.random_seed || 42,
+        backend_count: config.max_concurrency_per_backend,
+        max_requests_per_backend: 1,
+        model: config.model_id || 'gemma4:12b',
       });
-      const started = await apiClient.post(`/api/experiments/${created.data.experiment_id}/start`);
-      return started.data;
+      return {
+        experiment_id: paired.data.active_experiment_id,
+        status: paired.data.status,
+        paired_experiment_ids: {
+          fifo: paired.data.fifo_experiment_id,
+          token_aware: paired.data.token_aware_experiment_id,
+        },
+      };
     } catch (error) {
       throw handleAxiosError(error);
     }
@@ -234,6 +301,7 @@ export const experimentService = {
     const sseUrl = `${getApiBaseUrl()}/api/experiments/${experimentId}/events`;
     const eventSource = new EventSource(sseUrl);
     const seenEventIds = new Set();
+    let closed = false;
 
     const receive = (event) => {
       try {
@@ -244,20 +312,29 @@ export const experimentService = {
         if (parsed.id) {
           seenEventIds.add(parsed.id);
         }
-        const normalized = { ...parsed.data, id: parsed.id, timestamp: parsed.timestamp, event_type: parsed.event };
-        if (onRequestUpdate && ['request_queued', 'request_dispatched', 'request_completed'].includes(parsed.event)) onRequestUpdate(normalized);
+        const normalized = {
+          ...parsed.data,
+          id: parsed.id,
+          timestamp: parsed.timestamp,
+          event_type: parsed.event,
+          relative_time_sec: parsed.data?.relative_time_sec ?? 0,
+          message: parsed.data?.message ?? parsed.data?.error ?? parsed.event.replaceAll('_', ' '),
+        };
+        if (onRequestUpdate && ['request_queued', 'request_calculated', 'request_dispatched', 'backend_selected', 'request_completed', 'request_failed'].includes(parsed.event)) onRequestUpdate(normalized);
         onEvent(normalized);
       } catch (e) {
         console.error('Failed to parse SSE event data', e);
       }
     };
-    ['experiment_started', 'request_accepted', 'request_queued', 'request_dispatched', 'first_token', 'request_completed', 'request_failed', 'request_cancelled', 'metrics_update', 'experiment_completed', 'experiment_failed', 'stream_resync_required'].forEach((type) => eventSource.addEventListener(type, receive));
+    ['experiment_planning', 'experiment_started', 'request_accepted', 'request_queued', 'request_calculated', 'request_dispatched', 'backend_selected', 'first_token', 'request_completed', 'request_failed', 'request_cancelled', 'backend_retry', 'backend_circuit_opened', 'backend_recovered', 'metrics_update', 'experiment_completed', 'experiment_failed', 'stream_resync_required'].forEach((type) => eventSource.addEventListener(type, receive));
 
     eventSource.onerror = (err) => {
+      if (closed) return;
       if (onError) onError(err);
     };
 
     return () => {
+      closed = true;
       eventSource.close();
       seenEventIds.clear();
     };

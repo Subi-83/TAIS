@@ -1,0 +1,7 @@
+request_id: c81ba8da-a35a-40d3-91ad-a7c0887770c6
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 17
+ttft_ms: 23854.20297100063
+
+The currency of the United Kingdom is the **Pound sterling** (GBP).

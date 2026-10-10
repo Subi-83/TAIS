@@ -1,0 +1,6 @@
+request_id: c2097555-2dbe-47fc-9fe4-fad131bea11c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+In which direction does the sun rise?

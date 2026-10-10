@@ -1,0 +1,6 @@
+request_id: 6f08e16b-8e51-4498-9866-5e73dcf5178a
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1085
+
+Implement a complete LRU cache in Python with O(1) get and put operations, including type hints, docstrings and unit tests.

@@ -1,0 +1,6 @@
+request_id: 11f05f4c-0e74-4616-8994-8cde76b19b58
+model: gemma4:12b
+priority: normal
+max_output_tokens: 840
+
+Analyze the causes, major events and long-term consequences of the French Revolution in detail.

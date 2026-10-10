@@ -13,7 +13,8 @@ class ScalingConfig(BaseModel):
 @router.get("/status")
 async def status(request: Request) -> dict:
     engine = request.app.state.gateway.scheduler
-    return request.app.state.scaling.evaluate(len(engine.pending), 1 if engine.active else 0)
+    request.app.state.scaling.evaluate(len(engine.pending), len(engine.active))
+    return {**request.app.state.scaling.snapshot(), **request.app.state.worker_manager.snapshot(), "events": request.app.state.repository.worker_events(100)}
 
 
 @router.get("/config")

@@ -1,0 +1,7 @@
+request_id: 6ac89bfe-367a-4c80-81cc-acfc7af20347
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 9
+ttft_ms: 16456.567776000156
+
+2 plus 2 is 4.

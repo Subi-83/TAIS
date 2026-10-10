@@ -1,0 +1,7 @@
+request_id: f6815070-0d5b-437a-8cfe-1baea038b196
+model: gemma4:12b
+input_tokens: 38
+output_tokens: 60
+ttft_ms: 6460.098646000006
+
+The water cycle, also known as the **hydrologic cycle**, is the continuous movement of water across the Earth’s surface, atmosphere, and underground reservoirs. It is a closed system driven primarily by solar energy and gravity, ensuring that the total amount of water on Earth remains relatively constant while its state

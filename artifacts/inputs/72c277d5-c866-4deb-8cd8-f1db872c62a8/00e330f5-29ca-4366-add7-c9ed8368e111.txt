@@ -1,0 +1,6 @@
+request_id: 00e330f5-29ca-4366-add7-c9ed8368e111
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1050
+
+Design a rate limiting system for a public API, compare token bucket, leaky bucket and sliding window algorithms, and write code for one of them.

@@ -1,0 +1,6 @@
+request_id: 8b6301cd-6d1a-49db-94e9-ceba5bfaf734
+model: gemma4:12b
+priority: normal
+max_output_tokens: 33
+
+What color do you get by mixing blue and yellow?

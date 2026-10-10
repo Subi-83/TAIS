@@ -1,0 +1,7 @@
+request_id: 18b5b439-a6d2-456b-bfb4-ed050727dab0
+model: mock-echo-1
+input_tokens: 3
+output_tokens: 4
+ttft_ms: None
+
+[mock:mock-echo-1] fault_initiation request 2

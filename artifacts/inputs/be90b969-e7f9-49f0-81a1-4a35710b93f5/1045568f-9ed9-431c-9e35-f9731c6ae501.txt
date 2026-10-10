@@ -1,0 +1,6 @@
+request_id: 1045568f-9ed9-431c-9e35-f9731c6ae501
+model: gemma4:12b
+priority: normal
+max_output_tokens: 40
+
+Translate the following sentence into Spanish: 'The quick brown fox jumps over the lazy dog.'

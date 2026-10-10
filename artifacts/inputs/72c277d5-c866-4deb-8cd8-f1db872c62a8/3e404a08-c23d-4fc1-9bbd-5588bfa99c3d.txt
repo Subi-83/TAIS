@@ -1,0 +1,6 @@
+request_id: 3e404a08-c23d-4fc1-9bbd-5588bfa99c3d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 910
+
+Explain the mathematics behind gradient descent in detail, including the derivation of the update rule, learning-rate effects and common variants.

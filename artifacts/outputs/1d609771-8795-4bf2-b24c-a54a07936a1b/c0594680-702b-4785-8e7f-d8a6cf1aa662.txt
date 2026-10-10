@@ -1,0 +1,27 @@
+request_id: c0594680-702b-4785-8e7f-d8a6cf1aa662
+model: gemma4:12b
+input_tokens: 39
+output_tokens: 312
+ttft_ms: 62334.22803299982
+
+Quantum mechanics is the fundamental theory in physics that describes the behavior of matter and energy at the atomic and subatomic scales. Unlike classical mechanics, which deals with deterministic paths and predictable outcomes, quantum mechanics operates on probabilities and wave-particle duality.
+
+Below are the key principles and their practical applications.
+
+---
+
+### I. Key Principles of Quantum Mechanics
+
+#### 1. Wave-Particle Duality
+Matter and light exhibit both wave-like and particle-like properties. 
+*   **Concept:** Light can behave as a wave (interference, diffraction) and as a particle (photons). Similarly, electrons—traditionally viewed as particles—exhibit wave patterns when passing through double-slit experiments.
+*   **Significance:** This principle suggests that "objects" do not have a single fixed nature but depend on how they are measured.
+
+#### 2. Quantization of Energy
+Energy is not continuous; it exists in discrete "packets" or units called **quanta**.
+*   **Concept:** In an atom, electrons can only occupy specific energy levels. They cannot exist "between" these levels.
+*   **Significance:** This explains why atoms are stable and why specific colors of light are emitted when electrons jump between states.
+
+#### 3. The Uncertainty Principle (Heisenberg)
+It is fundamentally impossible to know both the exact position and the exact momentum of a particle simultaneously.
+*   **Concept:** The more precisely you measure where a particle is, the less precisely you can know where it is

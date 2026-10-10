@@ -1,0 +1,6 @@
+request_id: 4bc47a4a-e463-4c29-ba61-fe0ca82c64c8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+What are the benefits and drawbacks of remote work? Give three of each.

@@ -1,0 +1,7 @@
+request_id: b0b06880-628a-4375-9212-606e8c5700bc
+model: gemma4:12b
+input_tokens: 44
+output_tokens: 130
+ttft_ms: 21601.75531999994
+
+

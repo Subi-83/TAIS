@@ -1,0 +1,7 @@
+request_id: 684f3d45-9091-4aeb-9553-4309b9e2ba6d
+model: gemma4:12b
+input_tokens: 25
+output_tokens: 163
+ttft_ms: 47610.64990700106
+
+World War I was caused by a complex web of long-standing tensions often summarized by the acronym **MAIN**: Militarism, Alliances, Imperialism, and Nationalism. The rapid buildup of massive standing armies and naval forces created a climate of competition, while a rigid system of mutual defense treaties ensured that a local conflict could quickly escalate into a continental war. Simultaneously, the fierce competition for overseas colonies and resources fueled international friction, while intense ethnic nationalism—particularly in the Balkans—threatened to destabilize multi-ethnic empires. These underlying pressures reached a breaking point in 1914 with the assassination of Archduke Franz Ferdinand of Austria-Hungary by a Serbian nationalist; this specific event triggered a "domino effect" of mobilizations and declarations of war, transforming a regional crisis into a global catastrophe.

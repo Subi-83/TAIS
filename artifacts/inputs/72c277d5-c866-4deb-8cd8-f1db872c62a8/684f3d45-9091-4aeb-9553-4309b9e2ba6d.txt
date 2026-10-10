@@ -1,0 +1,6 @@
+request_id: 684f3d45-9091-4aeb-9553-4309b9e2ba6d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Summarize the causes of World War I in one paragraph.

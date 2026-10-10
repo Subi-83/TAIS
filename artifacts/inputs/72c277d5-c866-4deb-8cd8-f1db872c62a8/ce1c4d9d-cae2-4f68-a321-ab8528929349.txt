@@ -1,0 +1,6 @@
+request_id: ce1c4d9d-cae2-4f68-a321-ab8528929349
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1120
+
+Design a database schema for an online learning platform with courses, students, instructors, payments and progress tracking, and write the SQL to create all tables.

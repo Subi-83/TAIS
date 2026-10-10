@@ -1,0 +1,18 @@
+request_id: 41d0f91e-0782-4433-a186-f5e612e55f32
+model: gemma4:12b
+input_tokens: 27
+output_tokens: 270
+ttft_ms: 71937.19682799929
+
+The primary difference between SQL and NoSQL databases lies in how they structure data, how they scale, and the types of queries they are optimized to handle.
+
+### Comparison Table
+
+| Feature | SQL (Relational) | NoSQL (Non-Relational) |
+| :--- | :--- | :--- |
+| **Data Model** | Structured: Tables with fixed rows and columns. | Unstructured/Semi-structured: Documents, Key-Value pairs, Graphs, or Wide-columns. |
+| **Schema** | **Predefined:** You must define the structure before inserting data. | **Dynamic:** Data can be inserted without a predefined schema (flexible). |
+| **Scaling** | **Vertical:** Scale by increasing the power of a single server (CPU, RAM). | **Horizontal:** Scale by adding more servers to a cluster (distributed). |
+| **Query Language** | Structured Query Language (SQL). | Varies by database (e.g., JSON-like queries, Gremlin, etc.). |
+| **Consistency** | Follows **ACID** properties (Atomicity, Consistency, Isolation, Durability). | Often follows **BASE** (Basically Available, Soft state, Eventual consistency). |
+| **Relationships** | Excellent at handling complex joins and multi-table relationships

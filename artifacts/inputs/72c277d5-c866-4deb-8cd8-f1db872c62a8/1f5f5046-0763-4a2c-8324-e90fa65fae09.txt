@@ -1,0 +1,6 @@
+request_id: 1f5f5046-0763-4a2c-8324-e90fa65fae09
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Give one synonym for "happy".

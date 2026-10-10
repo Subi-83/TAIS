@@ -1,0 +1,7 @@
+request_id: 40956b62-9867-4b3d-8807-7ddbb8798084
+model: gemma4:12b
+input_tokens: 20
+output_tokens: 8
+ttft_ms: 2011.1909779989219
+
+The capital of France is Paris.

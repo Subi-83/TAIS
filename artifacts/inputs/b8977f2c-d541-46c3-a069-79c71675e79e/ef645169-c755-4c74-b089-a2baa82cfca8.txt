@@ -1,0 +1,8 @@
+request_id: ef645169-c755-4c74-b089-a2baa82cfca8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 40
+
+Give me a quick 3-step recipe for making a basic omelet.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

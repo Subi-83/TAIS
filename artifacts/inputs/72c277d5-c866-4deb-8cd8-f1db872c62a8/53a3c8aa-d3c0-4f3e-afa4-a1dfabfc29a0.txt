@@ -1,0 +1,6 @@
+request_id: 53a3c8aa-d3c0-4f3e-afa4-a1dfabfc29a0
+model: gemma4:12b
+priority: normal
+max_output_tokens: 980
+
+Write a detailed explanation of how an operating system manages memory, including paging, segmentation, virtual memory and page replacement.

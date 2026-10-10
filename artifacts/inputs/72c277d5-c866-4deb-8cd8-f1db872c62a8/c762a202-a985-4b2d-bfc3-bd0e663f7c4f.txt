@@ -1,0 +1,6 @@
+request_id: c762a202-a985-4b2d-bfc3-bd0e663f7c4f
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Explain what a token is in the context of large language models.

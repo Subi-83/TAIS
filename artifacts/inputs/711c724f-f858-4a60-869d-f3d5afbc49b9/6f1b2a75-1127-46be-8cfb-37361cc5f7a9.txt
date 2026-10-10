@@ -1,0 +1,8 @@
+request_id: 6f1b2a75-1127-46be-8cfb-37361cc5f7a9
+model: gemma4:12b
+priority: normal
+max_output_tokens: 90
+
+Write a short paragraph describing the atmosphere of a bustling night market in Bangkok.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

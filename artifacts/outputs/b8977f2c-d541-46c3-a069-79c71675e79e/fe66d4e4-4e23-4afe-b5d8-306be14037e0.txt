@@ -1,0 +1,14 @@
+request_id: fe66d4e4-4e23-4afe-b5d8-306be14037e0
+model: gemma4:12b
+input_tokens: 49
+output_tokens: 850
+ttft_ms: 68002.29192600091
+
+To analyze the impact of social media on modern communication and human relationships, one must look beyond the simple dichotomy of "good vs. bad." Instead, we must examine the structural shift in how humans construct identity, maintain social capital, and experience intimacy. 
+
+The following analysis explores four primary dimensions of this transformation:
+
+### 1. The Architecture of "Context Collapse"
+In traditional physical environments, humans navigate different social circles using different "modes" of behavior (e.g., how you speak to a boss vs. a sibling). Social media facilitates **context collapse**, where these distinct spheres merge into a single public square.
+
+*   **Impact on Communication:** Because an individual’s audience is now heterogeneous (friends, family, colleagues, and strangers all viewing the same post), communication becomes more performative and homogenized. People self-censor or "curate" their personalities to appeal to the broadest possible denominator, potentially stif

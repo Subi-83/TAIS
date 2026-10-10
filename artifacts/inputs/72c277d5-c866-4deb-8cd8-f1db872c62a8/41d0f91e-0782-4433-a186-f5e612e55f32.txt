@@ -1,0 +1,6 @@
+request_id: 41d0f91e-0782-4433-a186-f5e612e55f32
+model: gemma4:12b
+priority: normal
+max_output_tokens: 270
+
+Compare SQL and NoSQL databases and give one use case for each.

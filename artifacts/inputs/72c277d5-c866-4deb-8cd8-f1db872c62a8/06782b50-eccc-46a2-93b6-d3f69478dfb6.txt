@@ -1,0 +1,6 @@
+request_id: 06782b50-eccc-46a2-93b6-d3f69478dfb6
+model: gemma4:12b
+priority: normal
+max_output_tokens: 240
+
+Discuss the ethical challenges of facial recognition in public spaces, presenting arguments from several perspectives and a balanced conclusion.

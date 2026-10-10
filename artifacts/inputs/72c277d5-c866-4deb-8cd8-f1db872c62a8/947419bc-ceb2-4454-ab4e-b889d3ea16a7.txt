@@ -1,0 +1,6 @@
+request_id: 947419bc-ceb2-4454-ab4e-b889d3ea16a7
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What does CPU stand for?

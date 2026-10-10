@@ -1,0 +1,8 @@
+request_id: 1c6678ea-cb77-4814-87aa-15a4e0ea7506
+model: gemma4:12b
+priority: normal
+max_output_tokens: 145
+
+Explain how photosynthesis works in simple terms.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

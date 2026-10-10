@@ -1,0 +1,11 @@
+request_id: 62ab65c7-2fb7-4b69-b347-4f67ec830842
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 30
+ttft_ms: 21713.853199998994
+
+There are **120 minutes** in two hours.
+
+Here is the calculation:
+1 hour = 60 minutes
+2 hours ×

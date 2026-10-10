@@ -1,0 +1,6 @@
+request_id: 1fb87962-85a0-4bbf-90bf-da1038ec50ee
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the plural of "child"?

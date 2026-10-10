@@ -1,0 +1,6 @@
+request_id: 85872d36-6fba-4323-bcef-d09013af13c3
+model: gemma4:12b
+priority: normal
+max_output_tokens: 1015
+
+Write a detailed incident postmortem for a fictional outage caused by a misconfigured load balancer, including timeline, root cause and action items.

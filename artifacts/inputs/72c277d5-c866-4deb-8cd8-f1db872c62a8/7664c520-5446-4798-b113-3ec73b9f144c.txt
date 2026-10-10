@@ -1,0 +1,6 @@
+request_id: 7664c520-5446-4798-b113-3ec73b9f144c
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Which animal is known as the king of the jungle?

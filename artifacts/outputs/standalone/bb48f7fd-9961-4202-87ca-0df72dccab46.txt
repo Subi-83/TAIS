@@ -1,0 +1,7 @@
+request_id: bb48f7fd-9961-4202-87ca-0df72dccab46
+model: gemma4:12b
+input_tokens: 19
+output_tokens: 7
+ttft_ms: 797.1458219999477
+
+Hello, how are you?

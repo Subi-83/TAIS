@@ -1,0 +1,56 @@
+request_id: d6ff685a-0b95-4406-88f3-830696e37384
+model: gemma4:12b
+input_tokens: 48
+output_tokens: 850
+ttft_ms: 720.0720770006228
+
+This meal plan is designed for a vegan athlete focusing on **high protein, complex carbohydrates, and healthy fats** to support muscle recovery, sustained energy, and hormonal balance.
+
+### Nutritional Strategy:
+*   **Protein:** Focus on tempeh, tofu, lentils, seitan, and quinoa.
+*   **Carbs:** Oats, sweet potatoes, brown rice, and berries.
+*   **Fats:** Avocado, walnuts, chia seeds, and flaxseeds.
+
+---
+
+### The 7-Day Meal Plan
+
+| Day | Breakfast | Lunch | Dinner | Snacks |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | Overnight Oats (Chia, berries, protein powder, walnuts) | Quinoa & Black Bean Salad with avocado and lime | Tofu Stir-fry with broccoli, snap peas, and brown rice | Apple slices with almond butter |
+| **2** | Tofu Scramble (Turmeric, spinach, peppers) with whole-grain toast | Leftover Tofu Stir-fry | Lentil Pasta with marinara and roasted zucchini | Roasted chickpeas |
+| **3** | Smoothie Bowl (Spinach, banana, protein powder, hemp seeds) | Chickpea "Tuna" Salad Sandwich on sprouted grain bread | Tempeh Buddha Bowl (Sweet potato, kale, tahini dressing) | Handful of almonds & dried apricots |
+| **4** | Overnight Oats (Same as Day 1) | Leftover Tempeh Buddha Bowl | Red Lentil Curry with spinach and basmati rice | Hummus and cucumber slices |
+| **5** | Tofu Scramble with avocado | Quinoa & Black Bean Salad | Seitan Steak with roasted root vegetables | Protein shake or soy yogurt |
+| **6** | Smoothie Bowl (Same as Day 3) | Lentil Soup with a side of sourdough toast | Vegan Chili (Beans, soy crumbles, peppers) | Edamame beans |
+| **7** | Buckwheat Pancakes with blueberries | Leftover Vegan Chili | Grilled Portobello Mushrooms with quinoa and asparagus | Walnuts and dark chocolate |
+
+---
+
+### The Shopping List
+
+**Produce**
+*   **Fruits:** Bananas (1 bunch), Blueberries (fresh or frozen), Apples (4), Lemons/Limes (3).
+*   **Vegetables:** Spinach (large bag), Kale (1 bunch), Broccoli (2 heads), Snap peas, Zucchini (2), Bell peppers (3), Sweet potatoes (3 large), Carrots, Asparagus (1 bunch), Cucumber, Avocado (4).
+*   **Aromatics:** Garlic, Ginger, Onion.
+
+**Proteins & Dairy Alternatives**
+*   **Tofu:** 2 blocks (Extra Firm).
+*   **Tempeh:** 1 package.
+*   **Seitan:** 1 package (or make from vital wheat gluten).
+*   **Beans/Legumes:** 2 cans Black beans, 2 cans Chickpeas, 1 bag Dried Red Lentils.
+*   **Milk/Yogurt:** Unsweetened Soy or Almond milk, Vegan Greek-style yogurt.
+*   **Protein Powder:** Vegan plant-based protein (Pea/Rice blend).
+
+**Grains & Pantry**
+*   **Grains:** Quinoa, Brown Rice, Rolled Oats, Buckwheat flour.
+*   **Bread:** Sprouted grain bread or Sourdough.
+*   **Pasta:** Red Lentil pasta or Whole wheat pasta.
+*   **Nuts/Seeds:** Walnuts, Almonds, Chia seeds, Hemp seeds, Flaxseeds, Almond butter.
+*   **Pantry Staples:** Tahini, Olive oil, Soy sauce (or Tamari), Marinara sauce, Curry powder, Turmeric, Nutritional yeast, Maple syrup.
+
+---
+
+### Athlete’s Prep Tips:
+1.  **Batch Cook:** Prepare a large pot of Quinoa and a batch of Lentil Soup on Sunday. This saves time during the week.
+2.  **Hydration:** Aim for 

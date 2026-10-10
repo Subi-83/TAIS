@@ -1,0 +1,8 @@
+request_id: 5c6a1d03-3edc-4d75-a349-181f6425ccd1
+model: gemma4:12b
+priority: normal
+max_output_tokens: 450
+
+Write a detailed short story about a detective who discovers a supernatural mystery in a small, foggy town.
+
+Benchmark variation 1: give a distinct answer while preserving the requested scope.

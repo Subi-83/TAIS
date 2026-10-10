@@ -1,0 +1,6 @@
+request_id: a8f87023-ed39-4d72-be83-526b4e41697e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 250
+
+Explain what a REST API is and list its common HTTP methods.

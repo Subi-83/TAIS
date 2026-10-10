@@ -1,0 +1,6 @@
+request_id: 27a916a9-cd95-4c97-a2c7-d55ab1d5a874
+model: gemma4:12b
+priority: normal
+max_output_tokens: 220
+
+Write a Python script that reads a CSV file and prints the average of a column.

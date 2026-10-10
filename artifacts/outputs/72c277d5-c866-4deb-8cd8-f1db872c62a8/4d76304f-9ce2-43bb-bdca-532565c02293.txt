@@ -1,0 +1,9 @@
+request_id: 4d76304f-9ce2-43bb-bdca-532565c02293
+model: gemma4:12b
+input_tokens: 21
+output_tokens: 30
+ttft_ms: 21308.366367000417
+
+The largest mammal on Earth is the **blue whale** (*Balaenoptera musculus*).
+
+Here are a few quick facts about its size

@@ -1,0 +1,6 @@
+request_id: 8855167a-c0d3-4f95-a947-380feea1d5ee
+model: gemma4:12b
+priority: normal
+max_output_tokens: 200
+
+Describe five good habits for keeping a personal computer secure.

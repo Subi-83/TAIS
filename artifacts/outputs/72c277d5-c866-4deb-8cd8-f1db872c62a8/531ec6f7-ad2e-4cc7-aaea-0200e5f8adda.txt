@@ -1,0 +1,9 @@
+request_id: 531ec6f7-ad2e-4cc7-aaea-0200e5f8adda
+model: gemma4:12b
+input_tokens: 22
+output_tokens: 29
+ttft_ms: 26067.902202999903
+
+The main language spoken in Brazil is **Portuguese**.
+
+Brazil is the only country in the Americas where Portuguese is the official and primary language.

@@ -1,0 +1,7 @@
+request_id: 2e3fa4b9-4090-4982-af08-c38daa66a8ff
+model: mock-echo-1
+input_tokens: 2
+output_tokens: 3
+ttft_ms: None
+
+[mock:mock-echo-1] Explain queues.

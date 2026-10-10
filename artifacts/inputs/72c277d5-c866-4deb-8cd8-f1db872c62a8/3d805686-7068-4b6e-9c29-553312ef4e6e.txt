@@ -1,0 +1,6 @@
+request_id: 3d805686-7068-4b6e-9c29-553312ef4e6e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the file extension for a Python script?

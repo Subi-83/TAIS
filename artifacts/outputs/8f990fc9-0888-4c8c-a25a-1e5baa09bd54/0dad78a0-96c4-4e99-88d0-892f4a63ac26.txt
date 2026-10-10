@@ -1,0 +1,7 @@
+request_id: 0dad78a0-96c4-4e99-88d0-892f4a63ac26
+model: gemma4:12b
+input_tokens: 23
+output_tokens: 12
+ttft_ms: 4184.948705998977
+
+12 multiplied by 8 is **96**.

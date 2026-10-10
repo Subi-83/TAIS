@@ -1,0 +1,6 @@
+request_id: cf75d907-68b1-4cee-8de5-73dd528a42ff
+model: gemma4:12b
+priority: normal
+max_output_tokens: 840
+
+Write an in-depth analysis of the economic effects of globalization on developing countries, covering both positive and negative impacts.

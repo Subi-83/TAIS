@@ -1,0 +1,6 @@
+request_id: d97d9130-db39-4bf0-abdb-8e8bd5b21137
+model: gemma4:12b
+priority: normal
+max_output_tokens: 180
+
+Write a JavaScript snippet to fetch data from a JSON API and log the results to the console.

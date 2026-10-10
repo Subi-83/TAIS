@@ -4,7 +4,7 @@ import io
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import PlainTextResponse
 
-from app.api.experiments import public, registry
+from app.api.experiments import persisted_metrics, public, registry
 
 router = APIRouter(prefix="/api/reports", tags=["reports"])
 
@@ -13,7 +13,10 @@ def report(experiment_id: str, request: Request) -> dict:
     experiment = registry(request).get(experiment_id)
     if not experiment:
         raise HTTPException(status_code=404, detail="experiment not found")
-    return {"experiment": public(experiment), "metrics": request.app.state.gateway.metrics.snapshot(experiment_id), "measurement_type": "mock" if request.app.state.settings.inference_mode == "mock" else "real"}
+    metrics = request.app.state.gateway.metrics.snapshot(experiment_id)
+    if not metrics["samples"]:
+        metrics = persisted_metrics(request, experiment_id)
+    return {"experiment": public(experiment), "metrics": metrics, "measurement_type": "mock" if request.app.state.settings.inference_mode == "mock" else "real"}
 
 
 @router.get("/{experiment_id}/json")

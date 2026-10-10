@@ -1,0 +1,9 @@
+request_id: 7664c520-5446-4798-b113-3ec73b9f144c
+model: gemma4:12b
+input_tokens: 24
+output_tokens: 30
+ttft_ms: 15173.80599200078
+
+The **lion** is traditionally known as the "king of the jungle." 
+
+Interestingly, although lions are the most famous "kings," they actually

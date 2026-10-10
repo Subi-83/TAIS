@@ -1,0 +1,6 @@
+request_id: 61918dba-8ce2-4dd6-803d-561d01bfe40e
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+Which river is the longest in Africa?

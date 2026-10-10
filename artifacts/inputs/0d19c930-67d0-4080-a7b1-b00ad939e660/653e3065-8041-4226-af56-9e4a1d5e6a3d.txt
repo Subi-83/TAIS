@@ -1,0 +1,6 @@
+request_id: 653e3065-8041-4226-af56-9e4a1d5e6a3d
+model: gemma4:12b
+priority: normal
+max_output_tokens: 128
+
+What is 12 multiplied by 8?

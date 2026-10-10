@@ -1,0 +1,6 @@
+request_id: 62b9578b-786d-4e1b-a818-cbe0fe7a4fe2
+model: gemma4:12b
+priority: normal
+max_output_tokens: 133
+
+Write a short product description for a reusable steel water bottle.

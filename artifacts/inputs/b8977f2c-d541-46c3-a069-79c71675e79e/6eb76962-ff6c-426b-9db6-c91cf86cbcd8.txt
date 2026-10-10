@@ -1,0 +1,8 @@
+request_id: 6eb76962-ff6c-426b-9db6-c91cf86cbcd8
+model: gemma4:12b
+priority: normal
+max_output_tokens: 130
+
+Explain how a microwave oven works in a few clear sentences.
+
+Benchmark variation 4: give a distinct answer while preserving the requested scope.

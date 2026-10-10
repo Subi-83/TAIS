@@ -1,0 +1,6 @@
+request_id: 61c5c107-b543-43e8-b9fb-aaea73cac611
+model: gemma4:12b
+priority: normal
+max_output_tokens: 700
+
+Give a step-by-step recipe for making simple tomato pasta.

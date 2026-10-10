@@ -154,12 +154,12 @@ export const DashboardPage = () => {
           definition="Rate of successfully completed inference requests per second."
         />
         <MetricCard
-          title="p95 Latency"
-          value={metrics.p95_completion_latency_ms.toFixed(0)}
+          title="Average Latency"
+          value={metrics.avg_completion_latency_ms.toFixed(0)}
           unit="ms"
-          subtext={`Avg TTFT: ${metrics.avg_time_to_first_token_ms.toFixed(1)}ms`}
+          subtext={`p95: ${metrics.p95_completion_latency_ms.toFixed(0)}ms · Avg TTFT: ${metrics.avg_time_to_first_token_ms.toFixed(1)}ms`}
           icon={<Activity className="h-4 w-4 text-teal-600" />}
-          definition="95th percentile end-to-end completion latency."
+          definition="Arithmetic mean of successful end-to-end completion latency samples."
         />
         <MetricCard
           title="Active Replicas"

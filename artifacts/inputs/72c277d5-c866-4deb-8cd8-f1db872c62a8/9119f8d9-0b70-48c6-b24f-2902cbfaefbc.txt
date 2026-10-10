@@ -1,0 +1,6 @@
+request_id: 9119f8d9-0b70-48c6-b24f-2902cbfaefbc
+model: gemma4:12b
+priority: normal
+max_output_tokens: 780
+
+Write a persuasive speech of about 600 words encouraging college students to contribute to open-source projects.

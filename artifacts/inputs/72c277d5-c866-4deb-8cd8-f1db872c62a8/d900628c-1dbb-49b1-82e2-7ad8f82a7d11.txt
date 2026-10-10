@@ -1,0 +1,6 @@
+request_id: d900628c-1dbb-49b1-82e2-7ad8f82a7d11
+model: gemma4:12b
+priority: normal
+max_output_tokens: 280
+
+Explain the difference between a stack and a queue with real-life examples.

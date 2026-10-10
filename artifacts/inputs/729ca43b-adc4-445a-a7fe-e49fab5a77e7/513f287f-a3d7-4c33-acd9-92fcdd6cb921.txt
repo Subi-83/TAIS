@@ -1,0 +1,6 @@
+request_id: 513f287f-a3d7-4c33-acd9-92fcdd6cb921
+model: gemma4:12b
+priority: normal
+max_output_tokens: 30
+
+What is the boiling point of water in Celsius?

@@ -1,0 +1,6 @@
+request_id: e8ebb289-4602-44b8-bb6a-ad8022e2ad02
+model: gemma4:12b
+priority: normal
+max_output_tokens: 100
+
+Solve this math problem: If a train leaves at 60mph and another leaves from the opposite direction at 80mph, how far apart are they after 3 hours?
